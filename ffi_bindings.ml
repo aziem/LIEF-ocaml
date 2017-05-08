@@ -1522,7 +1522,6 @@ struct
 
   module ElfBinary =
   struct
-    type elf_binary_t
     let elf_binary_t : elf_binary_t Ctypes.structure T.typ = T.structure "Elf_Binary_t"
     let handler = T.field elf_binary_t "handler" (T.ptr T.void)
     let name = T.field elf_binary_t "name" (T.string)
