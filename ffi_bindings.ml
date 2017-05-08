@@ -326,171 +326,171 @@ type elf_reloc_i386 =
   | R_386_NUM
 
 type elf_section_types = 
-| SHT_NULL
-| SHT_PROGBITS
-| SHT_SYMTAB
-| SHT_STRTAB
-| SHT_RELA
-| SHT_HASH
-| SHT_DYNAMIC
-| SHT_NOTE
-| SHT_NOBITS
-| SHT_REL
-| SHT_SHLIB
-| SHT_DYNSYM
-| SHT_INIT_ARRAY
-| SHT_FINI_ARRAY
-| SHT_PREINIT_ARRAY
-| SHT_GROUP
-| SHT_SYMTAB_SHNDX
-| SHT_LOOS
-| SHT_GNU_ATTRIBUTES
-| SHT_GNU_HASH
-| SHT_GNU_verdef
-| SHT_GNU_verneed
-| SHT_GNU_versym
-| SHT_HIOS
-| SHT_LOPROC
-| SHT_ARM_EXIDX
-| SHT_ARM_PREEMPTMAP
-| SHT_ARM_ATTRIBUTES
-| SHT_ARM_DEBUGOVERLAY
-| SHT_ARM_OVERLAYSECTION
-| SHT_HEX_ORDERED
-| SHT_X86_64_UNWIND
-| SHT_MIPS_REGINFO
-| SHT_MIPS_OPTIONS
-| SHT_MIPS_ABIFLAGS
-| SHT_HIPROC
-| SHT_LOUSER
-| SHT_HIUSER
+  | SHT_NULL
+  | SHT_PROGBITS
+  | SHT_SYMTAB
+  | SHT_STRTAB
+  | SHT_RELA
+  | SHT_HASH
+  | SHT_DYNAMIC
+  | SHT_NOTE
+  | SHT_NOBITS
+  | SHT_REL
+  | SHT_SHLIB
+  | SHT_DYNSYM
+  | SHT_INIT_ARRAY
+  | SHT_FINI_ARRAY
+  | SHT_PREINIT_ARRAY
+  | SHT_GROUP
+  | SHT_SYMTAB_SHNDX
+  | SHT_LOOS
+  | SHT_GNU_ATTRIBUTES
+  | SHT_GNU_HASH
+  | SHT_GNU_verdef
+  | SHT_GNU_verneed
+  | SHT_GNU_versym
+  | SHT_HIOS
+  | SHT_LOPROC
+  | SHT_ARM_EXIDX
+  | SHT_ARM_PREEMPTMAP
+  | SHT_ARM_ATTRIBUTES
+  | SHT_ARM_DEBUGOVERLAY
+  | SHT_ARM_OVERLAYSECTION
+  | SHT_HEX_ORDERED
+  | SHT_X86_64_UNWIND
+  | SHT_MIPS_REGINFO
+  | SHT_MIPS_OPTIONS
+  | SHT_MIPS_ABIFLAGS
+  | SHT_HIPROC
+  | SHT_LOUSER
+  | SHT_HIUSER
 
 type elf_segment_types = 
-| PT_NULL
-| PT_LOAD
-| PT_DYNAMIC
-| PT_INTERP
-| PT_NOTE
-| PT_SHLIB
-| PT_PHDR
-| PT_TLS
-| PT_LOOS
-| PT_HIOS
-| PT_LOPROC
-| PT_HIPROC
-| PT_GNU_EH_FRAME
-| PT_SUNW_EH_FRAME
-| PT_SUNW_UNWIND
-| PT_GNU_STACK
-| PT_GNU_RELRO
-| PT_ARM_ARCHEXT
-| PT_ARM_EXIDX
-| PT_ARM_UNWIND
-| PT_MIPS_REGINFO
-| PT_MIPS_RTPROC
-| PT_MIPS_OPTIONS
-| PT_MIPS_ABIFLAGS
+  | PT_NULL
+  | PT_LOAD
+  | PT_DYNAMIC
+  | PT_INTERP
+  | PT_NOTE
+  | PT_SHLIB
+  | PT_PHDR
+  | PT_TLS
+  | PT_LOOS
+  | PT_HIOS
+  | PT_LOPROC
+  | PT_HIPROC
+  | PT_GNU_EH_FRAME
+  | PT_SUNW_EH_FRAME
+  | PT_SUNW_UNWIND
+  | PT_GNU_STACK
+  | PT_GNU_RELRO
+  | PT_ARM_ARCHEXT
+  | PT_ARM_EXIDX
+  | PT_ARM_UNWIND
+  | PT_MIPS_REGINFO
+  | PT_MIPS_RTPROC
+  | PT_MIPS_OPTIONS
+  | PT_MIPS_ABIFLAGS
 
 type elf_dynamic_tags = 
-| DT_NULL
-| DT_NEEDED
-| DT_PLTRELSZ
-| DT_PLTGOT
-| DT_HASH
-| DT_STRTAB
-| DT_SYMTAB
-| DT_RELA
-| DT_RELASZ
-| DT_RELAENT
-| DT_STRSZ
-| DT_SYMENT
-| DT_INIT
-| DT_FINI
-| DT_SONAME
-| DT_RPATH
-| DT_SYMBOLIC
-| DT_REL
-| DT_RELSZ
-| DT_RELENT
-| DT_PLTREL
-| DT_DEBUG
-| DT_TEXTREL
-| DT_JMPREL
-| DT_BIND_NOW
-| DT_INIT_ARRAY
-| DT_FINI_ARRAY
-| DT_INIT_ARRAYSZ
-| DT_FINI_ARRAYSZ
-| DT_RUNPATH
-| DT_FLAGS
-| DT_ENCODING
-| DT_PREINIT_ARRAY
-| DT_PREINIT_ARRAYSZ
-| DT_LOOS
-| DT_HIOS
-| DT_LOPROC
-| DT_HIPROC
-| DT_GNU_HASH
-| DT_RELACOUNT
-| DT_RELCOUNT
-| DT_FLAGS_1
-| DT_VERSYM
-| DT_VERDEF
-| DT_VERDEFNUM
-| DT_VERNEED
-| DT_VERNEEDNUM
-| DT_MIPS_RLD_VERSION
-| DT_MIPS_TIME_STAMP
-| DT_MIPS_ICHECKSUM
-| DT_MIPS_IVERSION
-| DT_MIPS_FLAGS
-| DT_MIPS_BASE_ADDRESS
-| DT_MIPS_MSYM
-| DT_MIPS_CONFLICT
-| DT_MIPS_LIBLIST
-| DT_MIPS_LOCAL_GOTNO
-| DT_MIPS_CONFLICTNO
-| DT_MIPS_LIBLISTNO
-| DT_MIPS_SYMTABNO
-| DT_MIPS_UNREFEXTNO
-| DT_MIPS_GOTSYM
-| DT_MIPS_HIPAGENO
-| DT_MIPS_RLD_MAP
-| DT_MIPS_DELTA_CLASS
-| DT_MIPS_DELTA_CLASS_NO
-| DT_MIPS_DELTA_INSTANCE
-| DT_MIPS_DELTA_INSTANCE_NO
-| DT_MIPS_DELTA_RELOC
-| DT_MIPS_DELTA_RELOC_NO
-| DT_MIPS_DELTA_SYM
-| DT_MIPS_DELTA_SYM_NO
-| DT_MIPS_DELTA_CLASSSYM
-| DT_MIPS_DELTA_CLASSSYM_NO
-| DT_MIPS_CXX_FLAGS
-| DT_MIPS_PIXIE_INIT
-| DT_MIPS_SYMBOL_LIB
-| DT_MIPS_LOCALPAGE_GOTIDX
-| DT_MIPS_LOCAL_GOTIDX
-| DT_MIPS_HIDDEN_GOTIDX
-| DT_MIPS_PROTECTED_GOTIDX
-| DT_MIPS_OPTIONS
-| DT_MIPS_INTERFACE
-| DT_MIPS_DYNSTR_ALIGN
-| DT_MIPS_INTERFACE_SIZE
-| DT_MIPS_RLD_TEXT_RESOLVE_ADDR
-| DT_MIPS_PERF_SUFFIX
-| DT_MIPS_COMPACT_SIZE
-| DT_MIPS_GP_VALUE
-| DT_MIPS_AUX_DYNAMIC
-| DT_MIPS_PLTGOT
-| DT_MIPS_RWPLT
+  | DT_NULL
+  | DT_NEEDED
+  | DT_PLTRELSZ
+  | DT_PLTGOT
+  | DT_HASH
+  | DT_STRTAB
+  | DT_SYMTAB
+  | DT_RELA
+  | DT_RELASZ
+  | DT_RELAENT
+  | DT_STRSZ
+  | DT_SYMENT
+  | DT_INIT
+  | DT_FINI
+  | DT_SONAME
+  | DT_RPATH
+  | DT_SYMBOLIC
+  | DT_REL
+  | DT_RELSZ
+  | DT_RELENT
+  | DT_PLTREL
+  | DT_DEBUG
+  | DT_TEXTREL
+  | DT_JMPREL
+  | DT_BIND_NOW
+  | DT_INIT_ARRAY
+  | DT_FINI_ARRAY
+  | DT_INIT_ARRAYSZ
+  | DT_FINI_ARRAYSZ
+  | DT_RUNPATH
+  | DT_FLAGS
+  | DT_ENCODING
+  | DT_PREINIT_ARRAY
+  | DT_PREINIT_ARRAYSZ
+  | DT_LOOS
+  | DT_HIOS
+  | DT_LOPROC
+  | DT_HIPROC
+  | DT_GNU_HASH
+  | DT_RELACOUNT
+  | DT_RELCOUNT
+  | DT_FLAGS_1
+  | DT_VERSYM
+  | DT_VERDEF
+  | DT_VERDEFNUM
+  | DT_VERNEED
+  | DT_VERNEEDNUM
+  | DT_MIPS_RLD_VERSION
+  | DT_MIPS_TIME_STAMP
+  | DT_MIPS_ICHECKSUM
+  | DT_MIPS_IVERSION
+  | DT_MIPS_FLAGS
+  | DT_MIPS_BASE_ADDRESS
+  | DT_MIPS_MSYM
+  | DT_MIPS_CONFLICT
+  | DT_MIPS_LIBLIST
+  | DT_MIPS_LOCAL_GOTNO
+  | DT_MIPS_CONFLICTNO
+  | DT_MIPS_LIBLISTNO
+  | DT_MIPS_SYMTABNO
+  | DT_MIPS_UNREFEXTNO
+  | DT_MIPS_GOTSYM
+  | DT_MIPS_HIPAGENO
+  | DT_MIPS_RLD_MAP
+  | DT_MIPS_DELTA_CLASS
+  | DT_MIPS_DELTA_CLASS_NO
+  | DT_MIPS_DELTA_INSTANCE
+  | DT_MIPS_DELTA_INSTANCE_NO
+  | DT_MIPS_DELTA_RELOC
+  | DT_MIPS_DELTA_RELOC_NO
+  | DT_MIPS_DELTA_SYM
+  | DT_MIPS_DELTA_SYM_NO
+  | DT_MIPS_DELTA_CLASSSYM
+  | DT_MIPS_DELTA_CLASSSYM_NO
+  | DT_MIPS_CXX_FLAGS
+  | DT_MIPS_PIXIE_INIT
+  | DT_MIPS_SYMBOL_LIB
+  | DT_MIPS_LOCALPAGE_GOTIDX
+  | DT_MIPS_LOCAL_GOTIDX
+  | DT_MIPS_HIDDEN_GOTIDX
+  | DT_MIPS_PROTECTED_GOTIDX
+  | DT_MIPS_OPTIONS
+  | DT_MIPS_INTERFACE
+  | DT_MIPS_DYNSTR_ALIGN
+  | DT_MIPS_INTERFACE_SIZE
+  | DT_MIPS_RLD_TEXT_RESOLVE_ADDR
+  | DT_MIPS_PERF_SUFFIX
+  | DT_MIPS_COMPACT_SIZE
+  | DT_MIPS_GP_VALUE
+  | DT_MIPS_AUX_DYNAMIC
+  | DT_MIPS_PLTGOT
+  | DT_MIPS_RWPLT
 
 type elf_dynamic_flags = 
-| DF_ORIGIN
-| DF_SYMBOLIC
-| DF_TEXTREL
-| DF_BIND_NOW
-| DF_STATIC_TLS
+  | DF_ORIGIN
+  | DF_SYMBOLIC
+  | DF_TEXTREL
+  | DF_BIND_NOW
+  | DF_STATIC_TLS
 
 
 
@@ -1137,326 +1137,326 @@ struct
         R_386_NUM, r_386_num;
       ]
 
-let sht_null = T.constant "SHT_NULL" T.int64_t
-let sht_progbits = T.constant "SHT_PROGBITS" T.int64_t
-let sht_symtab = T.constant "SHT_SYMTAB" T.int64_t
-let sht_strtab = T.constant "SHT_STRTAB" T.int64_t
-let sht_rela = T.constant "SHT_RELA" T.int64_t
-let sht_hash = T.constant "SHT_HASH" T.int64_t
-let sht_dynamic = T.constant "SHT_DYNAMIC" T.int64_t
-let sht_note = T.constant "SHT_NOTE" T.int64_t
-let sht_nobits = T.constant "SHT_NOBITS" T.int64_t
-let sht_rel = T.constant "SHT_REL" T.int64_t
-let sht_shlib = T.constant "SHT_SHLIB" T.int64_t
-let sht_dynsym = T.constant "SHT_DYNSYM" T.int64_t
-let sht_init_array = T.constant "SHT_INIT_ARRAY" T.int64_t
-let sht_fini_array = T.constant "SHT_FINI_ARRAY" T.int64_t
-let sht_preinit_array = T.constant "SHT_PREINIT_ARRAY" T.int64_t
-let sht_group = T.constant "SHT_GROUP" T.int64_t
-let sht_symtab_shndx = T.constant "SHT_SYMTAB_SHNDX" T.int64_t
-let sht_loos = T.constant "SHT_LOOS" T.int64_t
-let sht_gnu_attributes = T.constant "SHT_GNU_ATTRIBUTES" T.int64_t
-let sht_gnu_hash = T.constant "SHT_GNU_HASH" T.int64_t
-let sht_gnu_verdef = T.constant "SHT_GNU_verdef" T.int64_t
-let sht_gnu_verneed = T.constant "SHT_GNU_verneed" T.int64_t
-let sht_gnu_versym = T.constant "SHT_GNU_versym" T.int64_t
-let sht_hios = T.constant "SHT_HIOS" T.int64_t
-let sht_loproc = T.constant "SHT_LOPROC" T.int64_t
-let sht_arm_exidx = T.constant "SHT_ARM_EXIDX" T.int64_t
-let sht_arm_preemptmap = T.constant "SHT_ARM_PREEMPTMAP" T.int64_t
-let sht_arm_attributes = T.constant "SHT_ARM_ATTRIBUTES" T.int64_t
-let sht_arm_debugoverlay = T.constant "SHT_ARM_DEBUGOVERLAY" T.int64_t
-let sht_arm_overlaysection = T.constant "SHT_ARM_OVERLAYSECTION" T.int64_t
-let sht_hex_ordered = T.constant "SHT_HEX_ORDERED" T.int64_t
-let sht_x86_64_unwind = T.constant "SHT_X86_64_UNWIND" T.int64_t
-let sht_mips_reginfo = T.constant "SHT_MIPS_REGINFO" T.int64_t
-let sht_mips_options = T.constant "SHT_MIPS_OPTIONS" T.int64_t
-let sht_mips_abiflags = T.constant "SHT_MIPS_ABIFLAGS" T.int64_t
-let sht_hiproc = T.constant "SHT_HIPROC" T.int64_t
-let sht_louser = T.constant "SHT_LOUSER" T.int64_t
-let sht_hiuser = T.constant "SHT_HIUSER" T.int64_t
-let elf_section_types = T.enum "SECTION_TYPES" [
-	 SHT_NULL, sht_null;
-	 SHT_PROGBITS, sht_progbits;
-	 SHT_SYMTAB, sht_symtab;
-	 SHT_STRTAB, sht_strtab;
-	 SHT_RELA, sht_rela;
-	 SHT_HASH, sht_hash;
-	 SHT_DYNAMIC, sht_dynamic;
-	 SHT_NOTE, sht_note;
-	 SHT_NOBITS, sht_nobits;
-	 SHT_REL, sht_rel;
-	 SHT_SHLIB, sht_shlib;
-	 SHT_DYNSYM, sht_dynsym;
-	 SHT_INIT_ARRAY, sht_init_array;
-	 SHT_FINI_ARRAY, sht_fini_array;
-	 SHT_PREINIT_ARRAY, sht_preinit_array;
-	 SHT_GROUP, sht_group;
-	 SHT_SYMTAB_SHNDX, sht_symtab_shndx;
-	 SHT_LOOS, sht_loos;
-	 SHT_GNU_ATTRIBUTES, sht_gnu_attributes;
-	 SHT_GNU_HASH, sht_gnu_hash;
-	 SHT_GNU_verdef, sht_gnu_verdef;
-	 SHT_GNU_verneed, sht_gnu_verneed;
-	 SHT_GNU_versym, sht_gnu_versym;
-	 SHT_HIOS, sht_hios;
-	 SHT_LOPROC, sht_loproc;
-	 SHT_ARM_EXIDX, sht_arm_exidx;
-	 SHT_ARM_PREEMPTMAP, sht_arm_preemptmap;
-	 SHT_ARM_ATTRIBUTES, sht_arm_attributes;
-	 SHT_ARM_DEBUGOVERLAY, sht_arm_debugoverlay;
-	 SHT_ARM_OVERLAYSECTION, sht_arm_overlaysection;
-	 SHT_HEX_ORDERED, sht_hex_ordered;
-	 SHT_X86_64_UNWIND, sht_x86_64_unwind;
-	 SHT_MIPS_REGINFO, sht_mips_reginfo;
-	 SHT_MIPS_OPTIONS, sht_mips_options;
-	 SHT_MIPS_ABIFLAGS, sht_mips_abiflags;
-	 SHT_HIPROC, sht_hiproc;
-	 SHT_LOUSER, sht_louser;
-	 SHT_HIUSER, sht_hiuser;
-                               ]
-                      
-let pt_null = T.constant "PT_NULL" T.int64_t
-let pt_load = T.constant "PT_LOAD" T.int64_t
-let pt_dynamic = T.constant "PT_DYNAMIC" T.int64_t
-let pt_interp = T.constant "PT_INTERP" T.int64_t
-let pt_note = T.constant "PT_NOTE" T.int64_t
-let pt_shlib = T.constant "PT_SHLIB" T.int64_t
-let pt_phdr = T.constant "PT_PHDR" T.int64_t
-let pt_tls = T.constant "PT_TLS" T.int64_t
-let pt_loos = T.constant "PT_LOOS" T.int64_t
-let pt_hios = T.constant "PT_HIOS" T.int64_t
-let pt_loproc = T.constant "PT_LOPROC" T.int64_t
-let pt_hiproc = T.constant "PT_HIPROC" T.int64_t
-let pt_gnu_eh_frame = T.constant "PT_GNU_EH_FRAME" T.int64_t
-let pt_sunw_eh_frame = T.constant "PT_SUNW_EH_FRAME" T.int64_t
-let pt_sunw_unwind = T.constant "PT_SUNW_UNWIND" T.int64_t
-let pt_gnu_stack = T.constant "PT_GNU_STACK" T.int64_t
-let pt_gnu_relro = T.constant "PT_GNU_RELRO" T.int64_t
-let pt_arm_archext = T.constant "PT_ARM_ARCHEXT" T.int64_t
-let pt_arm_exidx = T.constant "PT_ARM_EXIDX" T.int64_t
-let pt_arm_unwind = T.constant "PT_ARM_UNWIND" T.int64_t
-let pt_mips_reginfo = T.constant "PT_MIPS_REGINFO" T.int64_t
-let pt_mips_rtproc = T.constant "PT_MIPS_RTPROC" T.int64_t
-let pt_mips_options = T.constant "PT_MIPS_OPTIONS" T.int64_t
-let pt_mips_abiflags = T.constant "PT_MIPS_ABIFLAGS" T.int64_t
+    let sht_null = T.constant "SHT_NULL" T.int64_t
+    let sht_progbits = T.constant "SHT_PROGBITS" T.int64_t
+    let sht_symtab = T.constant "SHT_SYMTAB" T.int64_t
+    let sht_strtab = T.constant "SHT_STRTAB" T.int64_t
+    let sht_rela = T.constant "SHT_RELA" T.int64_t
+    let sht_hash = T.constant "SHT_HASH" T.int64_t
+    let sht_dynamic = T.constant "SHT_DYNAMIC" T.int64_t
+    let sht_note = T.constant "SHT_NOTE" T.int64_t
+    let sht_nobits = T.constant "SHT_NOBITS" T.int64_t
+    let sht_rel = T.constant "SHT_REL" T.int64_t
+    let sht_shlib = T.constant "SHT_SHLIB" T.int64_t
+    let sht_dynsym = T.constant "SHT_DYNSYM" T.int64_t
+    let sht_init_array = T.constant "SHT_INIT_ARRAY" T.int64_t
+    let sht_fini_array = T.constant "SHT_FINI_ARRAY" T.int64_t
+    let sht_preinit_array = T.constant "SHT_PREINIT_ARRAY" T.int64_t
+    let sht_group = T.constant "SHT_GROUP" T.int64_t
+    let sht_symtab_shndx = T.constant "SHT_SYMTAB_SHNDX" T.int64_t
+    let sht_loos = T.constant "SHT_LOOS" T.int64_t
+    let sht_gnu_attributes = T.constant "SHT_GNU_ATTRIBUTES" T.int64_t
+    let sht_gnu_hash = T.constant "SHT_GNU_HASH" T.int64_t
+    let sht_gnu_verdef = T.constant "SHT_GNU_verdef" T.int64_t
+    let sht_gnu_verneed = T.constant "SHT_GNU_verneed" T.int64_t
+    let sht_gnu_versym = T.constant "SHT_GNU_versym" T.int64_t
+    let sht_hios = T.constant "SHT_HIOS" T.int64_t
+    let sht_loproc = T.constant "SHT_LOPROC" T.int64_t
+    let sht_arm_exidx = T.constant "SHT_ARM_EXIDX" T.int64_t
+    let sht_arm_preemptmap = T.constant "SHT_ARM_PREEMPTMAP" T.int64_t
+    let sht_arm_attributes = T.constant "SHT_ARM_ATTRIBUTES" T.int64_t
+    let sht_arm_debugoverlay = T.constant "SHT_ARM_DEBUGOVERLAY" T.int64_t
+    let sht_arm_overlaysection = T.constant "SHT_ARM_OVERLAYSECTION" T.int64_t
+    let sht_hex_ordered = T.constant "SHT_HEX_ORDERED" T.int64_t
+    let sht_x86_64_unwind = T.constant "SHT_X86_64_UNWIND" T.int64_t
+    let sht_mips_reginfo = T.constant "SHT_MIPS_REGINFO" T.int64_t
+    let sht_mips_options = T.constant "SHT_MIPS_OPTIONS" T.int64_t
+    let sht_mips_abiflags = T.constant "SHT_MIPS_ABIFLAGS" T.int64_t
+    let sht_hiproc = T.constant "SHT_HIPROC" T.int64_t
+    let sht_louser = T.constant "SHT_LOUSER" T.int64_t
+    let sht_hiuser = T.constant "SHT_HIUSER" T.int64_t
+    let elf_section_types = T.enum "SECTION_TYPES" [
+	SHT_NULL, sht_null;
+	SHT_PROGBITS, sht_progbits;
+	SHT_SYMTAB, sht_symtab;
+	SHT_STRTAB, sht_strtab;
+	SHT_RELA, sht_rela;
+	SHT_HASH, sht_hash;
+	SHT_DYNAMIC, sht_dynamic;
+	SHT_NOTE, sht_note;
+	SHT_NOBITS, sht_nobits;
+	SHT_REL, sht_rel;
+	SHT_SHLIB, sht_shlib;
+	SHT_DYNSYM, sht_dynsym;
+	SHT_INIT_ARRAY, sht_init_array;
+	SHT_FINI_ARRAY, sht_fini_array;
+	SHT_PREINIT_ARRAY, sht_preinit_array;
+	SHT_GROUP, sht_group;
+	SHT_SYMTAB_SHNDX, sht_symtab_shndx;
+	SHT_LOOS, sht_loos;
+	SHT_GNU_ATTRIBUTES, sht_gnu_attributes;
+	SHT_GNU_HASH, sht_gnu_hash;
+	SHT_GNU_verdef, sht_gnu_verdef;
+	SHT_GNU_verneed, sht_gnu_verneed;
+	SHT_GNU_versym, sht_gnu_versym;
+	SHT_HIOS, sht_hios;
+	SHT_LOPROC, sht_loproc;
+	SHT_ARM_EXIDX, sht_arm_exidx;
+	SHT_ARM_PREEMPTMAP, sht_arm_preemptmap;
+	SHT_ARM_ATTRIBUTES, sht_arm_attributes;
+	SHT_ARM_DEBUGOVERLAY, sht_arm_debugoverlay;
+	SHT_ARM_OVERLAYSECTION, sht_arm_overlaysection;
+	SHT_HEX_ORDERED, sht_hex_ordered;
+	SHT_X86_64_UNWIND, sht_x86_64_unwind;
+	SHT_MIPS_REGINFO, sht_mips_reginfo;
+	SHT_MIPS_OPTIONS, sht_mips_options;
+	SHT_MIPS_ABIFLAGS, sht_mips_abiflags;
+	SHT_HIPROC, sht_hiproc;
+	SHT_LOUSER, sht_louser;
+	SHT_HIUSER, sht_hiuser;
+      ]
 
-let elf_segment_types = T.enum "SEGMENT_TYPES" [
-	 PT_NULL, pt_null;
-	 PT_LOAD, pt_load;
-	 PT_DYNAMIC, pt_dynamic;
-	 PT_INTERP, pt_interp;
-	 PT_NOTE, pt_note;
-	 PT_SHLIB, pt_shlib;
-	 PT_PHDR, pt_phdr;
-	 PT_TLS, pt_tls;
-	 PT_LOOS, pt_loos;
-	 PT_HIOS, pt_hios;
-	 PT_LOPROC, pt_loproc;
-	 PT_HIPROC, pt_hiproc;
-	 PT_GNU_EH_FRAME, pt_gnu_eh_frame;
-	 PT_SUNW_EH_FRAME, pt_sunw_eh_frame;
-	 PT_SUNW_UNWIND, pt_sunw_unwind;
-	 PT_GNU_STACK, pt_gnu_stack;
-	 PT_GNU_RELRO, pt_gnu_relro;
-	 PT_ARM_ARCHEXT, pt_arm_archext;
-	 PT_ARM_EXIDX, pt_arm_exidx;
-	 PT_ARM_UNWIND, pt_arm_unwind;
-	 PT_MIPS_REGINFO, pt_mips_reginfo;
-	 PT_MIPS_RTPROC, pt_mips_rtproc;
-	 PT_MIPS_OPTIONS, pt_mips_options;
-	 PT_MIPS_ABIFLAGS, pt_mips_abiflags;
-                               ]
+    let pt_null = T.constant "PT_NULL" T.int64_t
+    let pt_load = T.constant "PT_LOAD" T.int64_t
+    let pt_dynamic = T.constant "PT_DYNAMIC" T.int64_t
+    let pt_interp = T.constant "PT_INTERP" T.int64_t
+    let pt_note = T.constant "PT_NOTE" T.int64_t
+    let pt_shlib = T.constant "PT_SHLIB" T.int64_t
+    let pt_phdr = T.constant "PT_PHDR" T.int64_t
+    let pt_tls = T.constant "PT_TLS" T.int64_t
+    let pt_loos = T.constant "PT_LOOS" T.int64_t
+    let pt_hios = T.constant "PT_HIOS" T.int64_t
+    let pt_loproc = T.constant "PT_LOPROC" T.int64_t
+    let pt_hiproc = T.constant "PT_HIPROC" T.int64_t
+    let pt_gnu_eh_frame = T.constant "PT_GNU_EH_FRAME" T.int64_t
+    let pt_sunw_eh_frame = T.constant "PT_SUNW_EH_FRAME" T.int64_t
+    let pt_sunw_unwind = T.constant "PT_SUNW_UNWIND" T.int64_t
+    let pt_gnu_stack = T.constant "PT_GNU_STACK" T.int64_t
+    let pt_gnu_relro = T.constant "PT_GNU_RELRO" T.int64_t
+    let pt_arm_archext = T.constant "PT_ARM_ARCHEXT" T.int64_t
+    let pt_arm_exidx = T.constant "PT_ARM_EXIDX" T.int64_t
+    let pt_arm_unwind = T.constant "PT_ARM_UNWIND" T.int64_t
+    let pt_mips_reginfo = T.constant "PT_MIPS_REGINFO" T.int64_t
+    let pt_mips_rtproc = T.constant "PT_MIPS_RTPROC" T.int64_t
+    let pt_mips_options = T.constant "PT_MIPS_OPTIONS" T.int64_t
+    let pt_mips_abiflags = T.constant "PT_MIPS_ABIFLAGS" T.int64_t
 
-let dt_null = T.constant "DT_NULL" T.int64_t
-let dt_needed = T.constant "DT_NEEDED" T.int64_t
-let dt_pltrelsz = T.constant "DT_PLTRELSZ" T.int64_t
-let dt_pltgot = T.constant "DT_PLTGOT" T.int64_t
-let dt_hash = T.constant "DT_HASH" T.int64_t
-let dt_strtab = T.constant "DT_STRTAB" T.int64_t
-let dt_symtab = T.constant "DT_SYMTAB" T.int64_t
-let dt_rela = T.constant "DT_RELA" T.int64_t
-let dt_relasz = T.constant "DT_RELASZ" T.int64_t
-let dt_relaent = T.constant "DT_RELAENT" T.int64_t
-let dt_strsz = T.constant "DT_STRSZ" T.int64_t
-let dt_syment = T.constant "DT_SYMENT" T.int64_t
-let dt_init = T.constant "DT_INIT" T.int64_t
-let dt_fini = T.constant "DT_FINI" T.int64_t
-let dt_soname = T.constant "DT_SONAME" T.int64_t
-let dt_rpath = T.constant "DT_RPATH" T.int64_t
-let dt_symbolic = T.constant "DT_SYMBOLIC" T.int64_t
-let dt_rel = T.constant "DT_REL" T.int64_t
-let dt_relsz = T.constant "DT_RELSZ" T.int64_t
-let dt_relent = T.constant "DT_RELENT" T.int64_t
-let dt_pltrel = T.constant "DT_PLTREL" T.int64_t
-let dt_debug = T.constant "DT_DEBUG" T.int64_t
-let dt_textrel = T.constant "DT_TEXTREL" T.int64_t
-let dt_jmprel = T.constant "DT_JMPREL" T.int64_t
-let dt_bind_now = T.constant "DT_BIND_NOW" T.int64_t
-let dt_init_array = T.constant "DT_INIT_ARRAY" T.int64_t
-let dt_fini_array = T.constant "DT_FINI_ARRAY" T.int64_t
-let dt_init_arraysz = T.constant "DT_INIT_ARRAYSZ" T.int64_t
-let dt_fini_arraysz = T.constant "DT_FINI_ARRAYSZ" T.int64_t
-let dt_runpath = T.constant "DT_RUNPATH" T.int64_t
-let dt_flags = T.constant "DT_FLAGS" T.int64_t
-let dt_encoding = T.constant "DT_ENCODING" T.int64_t
-let dt_preinit_array = T.constant "DT_PREINIT_ARRAY" T.int64_t
-let dt_preinit_arraysz = T.constant "DT_PREINIT_ARRAYSZ" T.int64_t
-let dt_loos = T.constant "DT_LOOS" T.int64_t
-let dt_hios = T.constant "DT_HIOS" T.int64_t
-let dt_loproc = T.constant "DT_LOPROC" T.int64_t
-let dt_hiproc = T.constant "DT_HIPROC" T.int64_t
-let dt_gnu_hash = T.constant "DT_GNU_HASH" T.int64_t
-let dt_relacount = T.constant "DT_RELACOUNT" T.int64_t
-let dt_relcount = T.constant "DT_RELCOUNT" T.int64_t
-let dt_flags_1 = T.constant "DT_FLAGS_1" T.int64_t
-let dt_versym = T.constant "DT_VERSYM" T.int64_t
-let dt_verdef = T.constant "DT_VERDEF" T.int64_t
-let dt_verdefnum = T.constant "DT_VERDEFNUM" T.int64_t
-let dt_verneed = T.constant "DT_VERNEED" T.int64_t
-let dt_verneednum = T.constant "DT_VERNEEDNUM" T.int64_t
-let dt_mips_rld_version = T.constant "DT_MIPS_RLD_VERSION" T.int64_t
-let dt_mips_time_stamp = T.constant "DT_MIPS_TIME_STAMP" T.int64_t
-let dt_mips_ichecksum = T.constant "DT_MIPS_ICHECKSUM" T.int64_t
-let dt_mips_iversion = T.constant "DT_MIPS_IVERSION" T.int64_t
-let dt_mips_flags = T.constant "DT_MIPS_FLAGS" T.int64_t
-let dt_mips_base_address = T.constant "DT_MIPS_BASE_ADDRESS" T.int64_t
-let dt_mips_msym = T.constant "DT_MIPS_MSYM" T.int64_t
-let dt_mips_conflict = T.constant "DT_MIPS_CONFLICT" T.int64_t
-let dt_mips_liblist = T.constant "DT_MIPS_LIBLIST" T.int64_t
-let dt_mips_local_gotno = T.constant "DT_MIPS_LOCAL_GOTNO" T.int64_t
-let dt_mips_conflictno = T.constant "DT_MIPS_CONFLICTNO" T.int64_t
-let dt_mips_liblistno = T.constant "DT_MIPS_LIBLISTNO" T.int64_t
-let dt_mips_symtabno = T.constant "DT_MIPS_SYMTABNO" T.int64_t
-let dt_mips_unrefextno = T.constant "DT_MIPS_UNREFEXTNO" T.int64_t
-let dt_mips_gotsym = T.constant "DT_MIPS_GOTSYM" T.int64_t
-let dt_mips_hipageno = T.constant "DT_MIPS_HIPAGENO" T.int64_t
-let dt_mips_rld_map = T.constant "DT_MIPS_RLD_MAP" T.int64_t
-let dt_mips_delta_class = T.constant "DT_MIPS_DELTA_CLASS" T.int64_t
-let dt_mips_delta_class_no = T.constant "DT_MIPS_DELTA_CLASS_NO" T.int64_t
-let dt_mips_delta_instance = T.constant "DT_MIPS_DELTA_INSTANCE" T.int64_t
-let dt_mips_delta_instance_no = T.constant "DT_MIPS_DELTA_INSTANCE_NO" T.int64_t
-let dt_mips_delta_reloc = T.constant "DT_MIPS_DELTA_RELOC" T.int64_t
-let dt_mips_delta_reloc_no = T.constant "DT_MIPS_DELTA_RELOC_NO" T.int64_t
-let dt_mips_delta_sym = T.constant "DT_MIPS_DELTA_SYM" T.int64_t
-let dt_mips_delta_sym_no = T.constant "DT_MIPS_DELTA_SYM_NO" T.int64_t
-let dt_mips_delta_classsym = T.constant "DT_MIPS_DELTA_CLASSSYM" T.int64_t
-let dt_mips_delta_classsym_no = T.constant "DT_MIPS_DELTA_CLASSSYM_NO" T.int64_t
-let dt_mips_cxx_flags = T.constant "DT_MIPS_CXX_FLAGS" T.int64_t
-let dt_mips_pixie_init = T.constant "DT_MIPS_PIXIE_INIT" T.int64_t
-let dt_mips_symbol_lib = T.constant "DT_MIPS_SYMBOL_LIB" T.int64_t
-let dt_mips_localpage_gotidx = T.constant "DT_MIPS_LOCALPAGE_GOTIDX" T.int64_t
-let dt_mips_local_gotidx = T.constant "DT_MIPS_LOCAL_GOTIDX" T.int64_t
-let dt_mips_hidden_gotidx = T.constant "DT_MIPS_HIDDEN_GOTIDX" T.int64_t
-let dt_mips_protected_gotidx = T.constant "DT_MIPS_PROTECTED_GOTIDX" T.int64_t
-let dt_mips_options = T.constant "DT_MIPS_OPTIONS" T.int64_t
-let dt_mips_interface = T.constant "DT_MIPS_INTERFACE" T.int64_t
-let dt_mips_dynstr_align = T.constant "DT_MIPS_DYNSTR_ALIGN" T.int64_t
-let dt_mips_interface_size = T.constant "DT_MIPS_INTERFACE_SIZE" T.int64_t
-let dt_mips_rld_text_resolve_addr = T.constant "DT_MIPS_RLD_TEXT_RESOLVE_ADDR" T.int64_t
-let dt_mips_perf_suffix = T.constant "DT_MIPS_PERF_SUFFIX" T.int64_t
-let dt_mips_compact_size = T.constant "DT_MIPS_COMPACT_SIZE" T.int64_t
-let dt_mips_gp_value = T.constant "DT_MIPS_GP_VALUE" T.int64_t
-let dt_mips_aux_dynamic = T.constant "DT_MIPS_AUX_DYNAMIC" T.int64_t
-let dt_mips_pltgot = T.constant "DT_MIPS_PLTGOT" T.int64_t
-let dt_mips_rwplt = T.constant "DT_MIPS_RWPLT" T.int64_t
-let elf_dynamic_tags = T.enum "DYNAMIC_TAGS" [
-	 DT_NULL, dt_null;
-	 DT_NEEDED, dt_needed;
-	 DT_PLTRELSZ, dt_pltrelsz;
-	 DT_PLTGOT, dt_pltgot;
-	 DT_HASH, dt_hash;
-	 DT_STRTAB, dt_strtab;
-	 DT_SYMTAB, dt_symtab;
-	 DT_RELA, dt_rela;
-	 DT_RELASZ, dt_relasz;
-	 DT_RELAENT, dt_relaent;
-	 DT_STRSZ, dt_strsz;
-	 DT_SYMENT, dt_syment;
-	 DT_INIT, dt_init;
-	 DT_FINI, dt_fini;
-	 DT_SONAME, dt_soname;
-	 DT_RPATH, dt_rpath;
-	 DT_SYMBOLIC, dt_symbolic;
-	 DT_REL, dt_rel;
-	 DT_RELSZ, dt_relsz;
-	 DT_RELENT, dt_relent;
-	 DT_PLTREL, dt_pltrel;
-	 DT_DEBUG, dt_debug;
-	 DT_TEXTREL, dt_textrel;
-	 DT_JMPREL, dt_jmprel;
-	 DT_BIND_NOW, dt_bind_now;
-	 DT_INIT_ARRAY, dt_init_array;
-	 DT_FINI_ARRAY, dt_fini_array;
-	 DT_INIT_ARRAYSZ, dt_init_arraysz;
-	 DT_FINI_ARRAYSZ, dt_fini_arraysz;
-	 DT_RUNPATH, dt_runpath;
-	 DT_FLAGS, dt_flags;
-	 DT_ENCODING, dt_encoding;
-	 DT_PREINIT_ARRAY, dt_preinit_array;
-	 DT_PREINIT_ARRAYSZ, dt_preinit_arraysz;
-	 DT_LOOS, dt_loos;
-	 DT_HIOS, dt_hios;
-	 DT_LOPROC, dt_loproc;
-	 DT_HIPROC, dt_hiproc;
-	 DT_GNU_HASH, dt_gnu_hash;
-	 DT_RELACOUNT, dt_relacount;
-	 DT_RELCOUNT, dt_relcount;
-	 DT_FLAGS_1, dt_flags_1;
-	 DT_VERSYM, dt_versym;
-	 DT_VERDEF, dt_verdef;
-	 DT_VERDEFNUM, dt_verdefnum;
-	 DT_VERNEED, dt_verneed;
-	 DT_VERNEEDNUM, dt_verneednum;
-	 DT_MIPS_RLD_VERSION, dt_mips_rld_version;
-	 DT_MIPS_TIME_STAMP, dt_mips_time_stamp;
-	 DT_MIPS_ICHECKSUM, dt_mips_ichecksum;
-	 DT_MIPS_IVERSION, dt_mips_iversion;
-	 DT_MIPS_FLAGS, dt_mips_flags;
-	 DT_MIPS_BASE_ADDRESS, dt_mips_base_address;
-	 DT_MIPS_MSYM, dt_mips_msym;
-	 DT_MIPS_CONFLICT, dt_mips_conflict;
-	 DT_MIPS_LIBLIST, dt_mips_liblist;
-	 DT_MIPS_LOCAL_GOTNO, dt_mips_local_gotno;
-	 DT_MIPS_CONFLICTNO, dt_mips_conflictno;
-	 DT_MIPS_LIBLISTNO, dt_mips_liblistno;
-	 DT_MIPS_SYMTABNO, dt_mips_symtabno;
-	 DT_MIPS_UNREFEXTNO, dt_mips_unrefextno;
-	 DT_MIPS_GOTSYM, dt_mips_gotsym;
-	 DT_MIPS_HIPAGENO, dt_mips_hipageno;
-	 DT_MIPS_RLD_MAP, dt_mips_rld_map;
-	 DT_MIPS_DELTA_CLASS, dt_mips_delta_class;
-	 DT_MIPS_DELTA_CLASS_NO, dt_mips_delta_class_no;
-	 DT_MIPS_DELTA_INSTANCE, dt_mips_delta_instance;
-	 DT_MIPS_DELTA_INSTANCE_NO, dt_mips_delta_instance_no;
-	 DT_MIPS_DELTA_RELOC, dt_mips_delta_reloc;
-	 DT_MIPS_DELTA_RELOC_NO, dt_mips_delta_reloc_no;
-	 DT_MIPS_DELTA_SYM, dt_mips_delta_sym;
-	 DT_MIPS_DELTA_SYM_NO, dt_mips_delta_sym_no;
-	 DT_MIPS_DELTA_CLASSSYM, dt_mips_delta_classsym;
-	 DT_MIPS_DELTA_CLASSSYM_NO, dt_mips_delta_classsym_no;
-	 DT_MIPS_CXX_FLAGS, dt_mips_cxx_flags;
-	 DT_MIPS_PIXIE_INIT, dt_mips_pixie_init;
-	 DT_MIPS_SYMBOL_LIB, dt_mips_symbol_lib;
-	 DT_MIPS_LOCALPAGE_GOTIDX, dt_mips_localpage_gotidx;
-	 DT_MIPS_LOCAL_GOTIDX, dt_mips_local_gotidx;
-	 DT_MIPS_HIDDEN_GOTIDX, dt_mips_hidden_gotidx;
-	 DT_MIPS_PROTECTED_GOTIDX, dt_mips_protected_gotidx;
-	 DT_MIPS_OPTIONS, dt_mips_options;
-	 DT_MIPS_INTERFACE, dt_mips_interface;
-	 DT_MIPS_DYNSTR_ALIGN, dt_mips_dynstr_align;
-	 DT_MIPS_INTERFACE_SIZE, dt_mips_interface_size;
-	 DT_MIPS_RLD_TEXT_RESOLVE_ADDR, dt_mips_rld_text_resolve_addr;
-	 DT_MIPS_PERF_SUFFIX, dt_mips_perf_suffix;
-	 DT_MIPS_COMPACT_SIZE, dt_mips_compact_size;
-	 DT_MIPS_GP_VALUE, dt_mips_gp_value;
-	 DT_MIPS_AUX_DYNAMIC, dt_mips_aux_dynamic;
-	 DT_MIPS_PLTGOT, dt_mips_pltgot;
-	 DT_MIPS_RWPLT, dt_mips_rwplt;
-]
+    let elf_segment_types = T.enum "SEGMENT_TYPES" [
+	PT_NULL, pt_null;
+	PT_LOAD, pt_load;
+	PT_DYNAMIC, pt_dynamic;
+	PT_INTERP, pt_interp;
+	PT_NOTE, pt_note;
+	PT_SHLIB, pt_shlib;
+	PT_PHDR, pt_phdr;
+	PT_TLS, pt_tls;
+	PT_LOOS, pt_loos;
+	PT_HIOS, pt_hios;
+	PT_LOPROC, pt_loproc;
+	PT_HIPROC, pt_hiproc;
+	PT_GNU_EH_FRAME, pt_gnu_eh_frame;
+	PT_SUNW_EH_FRAME, pt_sunw_eh_frame;
+	PT_SUNW_UNWIND, pt_sunw_unwind;
+	PT_GNU_STACK, pt_gnu_stack;
+	PT_GNU_RELRO, pt_gnu_relro;
+	PT_ARM_ARCHEXT, pt_arm_archext;
+	PT_ARM_EXIDX, pt_arm_exidx;
+	PT_ARM_UNWIND, pt_arm_unwind;
+	PT_MIPS_REGINFO, pt_mips_reginfo;
+	PT_MIPS_RTPROC, pt_mips_rtproc;
+	PT_MIPS_OPTIONS, pt_mips_options;
+	PT_MIPS_ABIFLAGS, pt_mips_abiflags;
+      ]
+
+    let dt_null = T.constant "DT_NULL" T.int64_t
+    let dt_needed = T.constant "DT_NEEDED" T.int64_t
+    let dt_pltrelsz = T.constant "DT_PLTRELSZ" T.int64_t
+    let dt_pltgot = T.constant "DT_PLTGOT" T.int64_t
+    let dt_hash = T.constant "DT_HASH" T.int64_t
+    let dt_strtab = T.constant "DT_STRTAB" T.int64_t
+    let dt_symtab = T.constant "DT_SYMTAB" T.int64_t
+    let dt_rela = T.constant "DT_RELA" T.int64_t
+    let dt_relasz = T.constant "DT_RELASZ" T.int64_t
+    let dt_relaent = T.constant "DT_RELAENT" T.int64_t
+    let dt_strsz = T.constant "DT_STRSZ" T.int64_t
+    let dt_syment = T.constant "DT_SYMENT" T.int64_t
+    let dt_init = T.constant "DT_INIT" T.int64_t
+    let dt_fini = T.constant "DT_FINI" T.int64_t
+    let dt_soname = T.constant "DT_SONAME" T.int64_t
+    let dt_rpath = T.constant "DT_RPATH" T.int64_t
+    let dt_symbolic = T.constant "DT_SYMBOLIC" T.int64_t
+    let dt_rel = T.constant "DT_REL" T.int64_t
+    let dt_relsz = T.constant "DT_RELSZ" T.int64_t
+    let dt_relent = T.constant "DT_RELENT" T.int64_t
+    let dt_pltrel = T.constant "DT_PLTREL" T.int64_t
+    let dt_debug = T.constant "DT_DEBUG" T.int64_t
+    let dt_textrel = T.constant "DT_TEXTREL" T.int64_t
+    let dt_jmprel = T.constant "DT_JMPREL" T.int64_t
+    let dt_bind_now = T.constant "DT_BIND_NOW" T.int64_t
+    let dt_init_array = T.constant "DT_INIT_ARRAY" T.int64_t
+    let dt_fini_array = T.constant "DT_FINI_ARRAY" T.int64_t
+    let dt_init_arraysz = T.constant "DT_INIT_ARRAYSZ" T.int64_t
+    let dt_fini_arraysz = T.constant "DT_FINI_ARRAYSZ" T.int64_t
+    let dt_runpath = T.constant "DT_RUNPATH" T.int64_t
+    let dt_flags = T.constant "DT_FLAGS" T.int64_t
+    let dt_encoding = T.constant "DT_ENCODING" T.int64_t
+    let dt_preinit_array = T.constant "DT_PREINIT_ARRAY" T.int64_t
+    let dt_preinit_arraysz = T.constant "DT_PREINIT_ARRAYSZ" T.int64_t
+    let dt_loos = T.constant "DT_LOOS" T.int64_t
+    let dt_hios = T.constant "DT_HIOS" T.int64_t
+    let dt_loproc = T.constant "DT_LOPROC" T.int64_t
+    let dt_hiproc = T.constant "DT_HIPROC" T.int64_t
+    let dt_gnu_hash = T.constant "DT_GNU_HASH" T.int64_t
+    let dt_relacount = T.constant "DT_RELACOUNT" T.int64_t
+    let dt_relcount = T.constant "DT_RELCOUNT" T.int64_t
+    let dt_flags_1 = T.constant "DT_FLAGS_1" T.int64_t
+    let dt_versym = T.constant "DT_VERSYM" T.int64_t
+    let dt_verdef = T.constant "DT_VERDEF" T.int64_t
+    let dt_verdefnum = T.constant "DT_VERDEFNUM" T.int64_t
+    let dt_verneed = T.constant "DT_VERNEED" T.int64_t
+    let dt_verneednum = T.constant "DT_VERNEEDNUM" T.int64_t
+    let dt_mips_rld_version = T.constant "DT_MIPS_RLD_VERSION" T.int64_t
+    let dt_mips_time_stamp = T.constant "DT_MIPS_TIME_STAMP" T.int64_t
+    let dt_mips_ichecksum = T.constant "DT_MIPS_ICHECKSUM" T.int64_t
+    let dt_mips_iversion = T.constant "DT_MIPS_IVERSION" T.int64_t
+    let dt_mips_flags = T.constant "DT_MIPS_FLAGS" T.int64_t
+    let dt_mips_base_address = T.constant "DT_MIPS_BASE_ADDRESS" T.int64_t
+    let dt_mips_msym = T.constant "DT_MIPS_MSYM" T.int64_t
+    let dt_mips_conflict = T.constant "DT_MIPS_CONFLICT" T.int64_t
+    let dt_mips_liblist = T.constant "DT_MIPS_LIBLIST" T.int64_t
+    let dt_mips_local_gotno = T.constant "DT_MIPS_LOCAL_GOTNO" T.int64_t
+    let dt_mips_conflictno = T.constant "DT_MIPS_CONFLICTNO" T.int64_t
+    let dt_mips_liblistno = T.constant "DT_MIPS_LIBLISTNO" T.int64_t
+    let dt_mips_symtabno = T.constant "DT_MIPS_SYMTABNO" T.int64_t
+    let dt_mips_unrefextno = T.constant "DT_MIPS_UNREFEXTNO" T.int64_t
+    let dt_mips_gotsym = T.constant "DT_MIPS_GOTSYM" T.int64_t
+    let dt_mips_hipageno = T.constant "DT_MIPS_HIPAGENO" T.int64_t
+    let dt_mips_rld_map = T.constant "DT_MIPS_RLD_MAP" T.int64_t
+    let dt_mips_delta_class = T.constant "DT_MIPS_DELTA_CLASS" T.int64_t
+    let dt_mips_delta_class_no = T.constant "DT_MIPS_DELTA_CLASS_NO" T.int64_t
+    let dt_mips_delta_instance = T.constant "DT_MIPS_DELTA_INSTANCE" T.int64_t
+    let dt_mips_delta_instance_no = T.constant "DT_MIPS_DELTA_INSTANCE_NO" T.int64_t
+    let dt_mips_delta_reloc = T.constant "DT_MIPS_DELTA_RELOC" T.int64_t
+    let dt_mips_delta_reloc_no = T.constant "DT_MIPS_DELTA_RELOC_NO" T.int64_t
+    let dt_mips_delta_sym = T.constant "DT_MIPS_DELTA_SYM" T.int64_t
+    let dt_mips_delta_sym_no = T.constant "DT_MIPS_DELTA_SYM_NO" T.int64_t
+    let dt_mips_delta_classsym = T.constant "DT_MIPS_DELTA_CLASSSYM" T.int64_t
+    let dt_mips_delta_classsym_no = T.constant "DT_MIPS_DELTA_CLASSSYM_NO" T.int64_t
+    let dt_mips_cxx_flags = T.constant "DT_MIPS_CXX_FLAGS" T.int64_t
+    let dt_mips_pixie_init = T.constant "DT_MIPS_PIXIE_INIT" T.int64_t
+    let dt_mips_symbol_lib = T.constant "DT_MIPS_SYMBOL_LIB" T.int64_t
+    let dt_mips_localpage_gotidx = T.constant "DT_MIPS_LOCALPAGE_GOTIDX" T.int64_t
+    let dt_mips_local_gotidx = T.constant "DT_MIPS_LOCAL_GOTIDX" T.int64_t
+    let dt_mips_hidden_gotidx = T.constant "DT_MIPS_HIDDEN_GOTIDX" T.int64_t
+    let dt_mips_protected_gotidx = T.constant "DT_MIPS_PROTECTED_GOTIDX" T.int64_t
+    let dt_mips_options = T.constant "DT_MIPS_OPTIONS" T.int64_t
+    let dt_mips_interface = T.constant "DT_MIPS_INTERFACE" T.int64_t
+    let dt_mips_dynstr_align = T.constant "DT_MIPS_DYNSTR_ALIGN" T.int64_t
+    let dt_mips_interface_size = T.constant "DT_MIPS_INTERFACE_SIZE" T.int64_t
+    let dt_mips_rld_text_resolve_addr = T.constant "DT_MIPS_RLD_TEXT_RESOLVE_ADDR" T.int64_t
+    let dt_mips_perf_suffix = T.constant "DT_MIPS_PERF_SUFFIX" T.int64_t
+    let dt_mips_compact_size = T.constant "DT_MIPS_COMPACT_SIZE" T.int64_t
+    let dt_mips_gp_value = T.constant "DT_MIPS_GP_VALUE" T.int64_t
+    let dt_mips_aux_dynamic = T.constant "DT_MIPS_AUX_DYNAMIC" T.int64_t
+    let dt_mips_pltgot = T.constant "DT_MIPS_PLTGOT" T.int64_t
+    let dt_mips_rwplt = T.constant "DT_MIPS_RWPLT" T.int64_t
+    let elf_dynamic_tags = T.enum "DYNAMIC_TAGS" [
+	DT_NULL, dt_null;
+	DT_NEEDED, dt_needed;
+	DT_PLTRELSZ, dt_pltrelsz;
+	DT_PLTGOT, dt_pltgot;
+	DT_HASH, dt_hash;
+	DT_STRTAB, dt_strtab;
+	DT_SYMTAB, dt_symtab;
+	DT_RELA, dt_rela;
+	DT_RELASZ, dt_relasz;
+	DT_RELAENT, dt_relaent;
+	DT_STRSZ, dt_strsz;
+	DT_SYMENT, dt_syment;
+	DT_INIT, dt_init;
+	DT_FINI, dt_fini;
+	DT_SONAME, dt_soname;
+	DT_RPATH, dt_rpath;
+	DT_SYMBOLIC, dt_symbolic;
+	DT_REL, dt_rel;
+	DT_RELSZ, dt_relsz;
+	DT_RELENT, dt_relent;
+	DT_PLTREL, dt_pltrel;
+	DT_DEBUG, dt_debug;
+	DT_TEXTREL, dt_textrel;
+	DT_JMPREL, dt_jmprel;
+	DT_BIND_NOW, dt_bind_now;
+	DT_INIT_ARRAY, dt_init_array;
+	DT_FINI_ARRAY, dt_fini_array;
+	DT_INIT_ARRAYSZ, dt_init_arraysz;
+	DT_FINI_ARRAYSZ, dt_fini_arraysz;
+	DT_RUNPATH, dt_runpath;
+	DT_FLAGS, dt_flags;
+	DT_ENCODING, dt_encoding;
+	DT_PREINIT_ARRAY, dt_preinit_array;
+	DT_PREINIT_ARRAYSZ, dt_preinit_arraysz;
+	DT_LOOS, dt_loos;
+	DT_HIOS, dt_hios;
+	DT_LOPROC, dt_loproc;
+	DT_HIPROC, dt_hiproc;
+	DT_GNU_HASH, dt_gnu_hash;
+	DT_RELACOUNT, dt_relacount;
+	DT_RELCOUNT, dt_relcount;
+	DT_FLAGS_1, dt_flags_1;
+	DT_VERSYM, dt_versym;
+	DT_VERDEF, dt_verdef;
+	DT_VERDEFNUM, dt_verdefnum;
+	DT_VERNEED, dt_verneed;
+	DT_VERNEEDNUM, dt_verneednum;
+	DT_MIPS_RLD_VERSION, dt_mips_rld_version;
+	DT_MIPS_TIME_STAMP, dt_mips_time_stamp;
+	DT_MIPS_ICHECKSUM, dt_mips_ichecksum;
+	DT_MIPS_IVERSION, dt_mips_iversion;
+	DT_MIPS_FLAGS, dt_mips_flags;
+	DT_MIPS_BASE_ADDRESS, dt_mips_base_address;
+	DT_MIPS_MSYM, dt_mips_msym;
+	DT_MIPS_CONFLICT, dt_mips_conflict;
+	DT_MIPS_LIBLIST, dt_mips_liblist;
+	DT_MIPS_LOCAL_GOTNO, dt_mips_local_gotno;
+	DT_MIPS_CONFLICTNO, dt_mips_conflictno;
+	DT_MIPS_LIBLISTNO, dt_mips_liblistno;
+	DT_MIPS_SYMTABNO, dt_mips_symtabno;
+	DT_MIPS_UNREFEXTNO, dt_mips_unrefextno;
+	DT_MIPS_GOTSYM, dt_mips_gotsym;
+	DT_MIPS_HIPAGENO, dt_mips_hipageno;
+	DT_MIPS_RLD_MAP, dt_mips_rld_map;
+	DT_MIPS_DELTA_CLASS, dt_mips_delta_class;
+	DT_MIPS_DELTA_CLASS_NO, dt_mips_delta_class_no;
+	DT_MIPS_DELTA_INSTANCE, dt_mips_delta_instance;
+	DT_MIPS_DELTA_INSTANCE_NO, dt_mips_delta_instance_no;
+	DT_MIPS_DELTA_RELOC, dt_mips_delta_reloc;
+	DT_MIPS_DELTA_RELOC_NO, dt_mips_delta_reloc_no;
+	DT_MIPS_DELTA_SYM, dt_mips_delta_sym;
+	DT_MIPS_DELTA_SYM_NO, dt_mips_delta_sym_no;
+	DT_MIPS_DELTA_CLASSSYM, dt_mips_delta_classsym;
+	DT_MIPS_DELTA_CLASSSYM_NO, dt_mips_delta_classsym_no;
+	DT_MIPS_CXX_FLAGS, dt_mips_cxx_flags;
+	DT_MIPS_PIXIE_INIT, dt_mips_pixie_init;
+	DT_MIPS_SYMBOL_LIB, dt_mips_symbol_lib;
+	DT_MIPS_LOCALPAGE_GOTIDX, dt_mips_localpage_gotidx;
+	DT_MIPS_LOCAL_GOTIDX, dt_mips_local_gotidx;
+	DT_MIPS_HIDDEN_GOTIDX, dt_mips_hidden_gotidx;
+	DT_MIPS_PROTECTED_GOTIDX, dt_mips_protected_gotidx;
+	DT_MIPS_OPTIONS, dt_mips_options;
+	DT_MIPS_INTERFACE, dt_mips_interface;
+	DT_MIPS_DYNSTR_ALIGN, dt_mips_dynstr_align;
+	DT_MIPS_INTERFACE_SIZE, dt_mips_interface_size;
+	DT_MIPS_RLD_TEXT_RESOLVE_ADDR, dt_mips_rld_text_resolve_addr;
+	DT_MIPS_PERF_SUFFIX, dt_mips_perf_suffix;
+	DT_MIPS_COMPACT_SIZE, dt_mips_compact_size;
+	DT_MIPS_GP_VALUE, dt_mips_gp_value;
+	DT_MIPS_AUX_DYNAMIC, dt_mips_aux_dynamic;
+	DT_MIPS_PLTGOT, dt_mips_pltgot;
+	DT_MIPS_RWPLT, dt_mips_rwplt;
+      ]
 
 
-                      
+
   end
 
   module ElfHeader =
@@ -1505,49 +1505,49 @@ let elf_dynamic_tags = T.enum "DYNAMIC_TAGS" [
   end
 
   module ElfSegment =
-    struct
-      type elf_segment_t
-      let elf_segment_t : elf_segment_t Ctypes.structure T.typ = T.structure "Elf_Segment_t"
-      let type_ = T.field elf_segment_t "type" (ElfEnums.elf_segment_types)
-      let flags = T.field elf_segment_t "flags" (T.uint32_t)
-      let virtual_address = T.field elf_segment_t "virtual_address" (T.uint64_t)
-      let virtual_size = T.field elf_segment_t "virtual_size" (T.uint64_t)
-      let offset = T.field elf_segment_t "offset" (T.uint64_t)
-      let alignment = T.field elf_segment_t "alignment" (T.uint64_t)
-      let size = T.field elf_segment_t "size" (T.uint64_t)
-      let content = T.field elf_segment_t "content" (T.ptr T.uint8_t)
-    end
-          
+  struct
+    type elf_segment_t
+    let elf_segment_t : elf_segment_t Ctypes.structure T.typ = T.structure "Elf_Segment_t"
+    let type_ = T.field elf_segment_t "type" (ElfEnums.elf_segment_types)
+    let flags = T.field elf_segment_t "flags" (T.uint32_t)
+    let virtual_address = T.field elf_segment_t "virtual_address" (T.uint64_t)
+    let virtual_size = T.field elf_segment_t "virtual_size" (T.uint64_t)
+    let offset = T.field elf_segment_t "offset" (T.uint64_t)
+    let alignment = T.field elf_segment_t "alignment" (T.uint64_t)
+    let size = T.field elf_segment_t "size" (T.uint64_t)
+    let content = T.field elf_segment_t "content" (T.ptr T.uint8_t)
+  end
+
 
   module ElfBinary =
-    struct
-      type elf_binary_t
-      let elf_binary_t : elf_binary_t Ctypes.structure T.typ = T.structure "Elf_Binary_t"
-      let handler = T.field elf_binary_t "handler" (T.ptr T.void)
-      let name = T.field elf_binary_t "name" (T.string)
-      let interpreter = T.field elf_binary_t "interpreter" (T.string)
-      let type_ = T.field elf_binary_t "type" ElfEnums.elf_elf_class
-      let header = T.field elf_binary_t "header" ElfHeader.elf_header_t
-      let sections = T.field elf_binary_t "sections" (T.ptr (T.ptr ElfSection.elf_section_t))
-      let segments = T.field elf_binary_t "segments" (T.ptr (T.ptr ElfSegment.elf_segment_t))
-      (* TODO fix the entries below with non-void types*)
-      let dyn_entries = T.field elf_binary_t "dynamic_entries" (T.ptr (T.ptr T.void))
-      let dyn_symbols = T.field elf_binary_t "dynamic_symbols" (T.ptr (T.ptr T.void))
-      let static_symbols = T.field elf_binary_t "static_symbols" (T.ptr (T.ptr T.void))
-                                                                                                 
-    end
-    
- end   
-
-module Bindings(T : Cstubs_structs.TYPE with type 'a typ = 'a typ) (F : Cstubs.FOREIGN) =
   struct
-    module E = Enums(T)
-             
-    let elf_parse_ = F.foreign "elf_parse" F.(T.string @-> returning (T.ptr E.ElfBinary.elf_binary_t))
-                  
-    let elf_binary_destroy_ = F.foreign "elf_binary_destroy" F.(T.ptr E.ElfBinary.elf_binary_t @-> returning T.void)
-
+    type elf_binary_t
+    let elf_binary_t : elf_binary_t Ctypes.structure T.typ = T.structure "Elf_Binary_t"
+    let handler = T.field elf_binary_t "handler" (T.ptr T.void)
+    let name = T.field elf_binary_t "name" (T.string)
+    let interpreter = T.field elf_binary_t "interpreter" (T.string)
+    let type_ = T.field elf_binary_t "type" ElfEnums.elf_elf_class
+    let header = T.field elf_binary_t "header" ElfHeader.elf_header_t
+    let sections = T.field elf_binary_t "sections" (T.ptr (T.ptr ElfSection.elf_section_t))
+    let segments = T.field elf_binary_t "segments" (T.ptr (T.ptr ElfSegment.elf_segment_t))
+    (* TODO fix the entries below with non-void types*)
+    let dyn_entries = T.field elf_binary_t "dynamic_entries" (T.ptr (T.ptr T.void))
+    let dyn_symbols = T.field elf_binary_t "dynamic_symbols" (T.ptr (T.ptr T.void))
+    let static_symbols = T.field elf_binary_t "static_symbols" (T.ptr (T.ptr T.void))
 
   end
-  
+
+end   
+
+module Bindings(T : Cstubs_structs.TYPE with type 'a typ = 'a typ) (F : Cstubs.FOREIGN) =
+struct
+  module E = Enums(T)
+
+  let elf_parse_ = F.foreign "elf_parse" F.(T.string @-> returning (T.ptr E.ElfBinary.elf_binary_t))
+
+  let elf_binary_destroy_ = F.foreign "elf_binary_destroy" F.(T.ptr E.ElfBinary.elf_binary_t @-> returning T.void)
+
+
+end
+
 
