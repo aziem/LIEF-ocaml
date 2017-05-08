@@ -1516,6 +1516,7 @@ struct
     let alignment = T.field elf_segment_t "alignment" (T.uint64_t)
     let size = T.field elf_segment_t "size" (T.uint64_t)
     let content = T.field elf_segment_t "content" (T.ptr T.uint8_t)
+    let () = T.seal elf_segment_t 
   end
 
 
@@ -1534,6 +1535,7 @@ struct
     let dyn_entries = T.field elf_binary_t "dynamic_entries" (T.ptr (T.ptr T.void))
     let dyn_symbols = T.field elf_binary_t "dynamic_symbols" (T.ptr (T.ptr T.void))
     let static_symbols = T.field elf_binary_t "static_symbols" (T.ptr (T.ptr T.void))
+    let () = T.seal elf_binary_t
 
   end
 
