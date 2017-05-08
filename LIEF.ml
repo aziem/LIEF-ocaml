@@ -2,6 +2,8 @@ open Ctypes
 open Foreign
 
 module B = Ffi_bindings.Bindings(Ffi_generated_types)(Ffi_generated)
+module FT = Ffi_generated_types
+module F = Ffi_generated
 
 module ELF =
 struct
@@ -17,7 +19,7 @@ struct
     let open B.E in
     let sections = getf (!@ elf_binary) (ElfBinary.sections) in
     let rec loop acc p =
-      match Ffi_generated_types.coerce (ptr ElfSection.elf_section_t) (Ffi_generated_types.ptr_opt ElfSection.elf_section_t) !@p with
+      match FT.coerce (ptr ElfSection.elf_section_t) (FT.ptr_opt ElfSection.elf_section_t) !@p with
       | None -> List.rev acc
       | Some s -> loop (s :: acc) (p +@ 1)
     in
