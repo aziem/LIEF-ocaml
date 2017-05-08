@@ -11,6 +11,8 @@ struct
   module ELFBinary =
   struct
 
+    type t = Ffi_bindings.elf_binary_t structure ptr
+    
     let elf_binary_get_name elf_binary =
       getf (!@ elf_binary) (B.E.ElfBinary.name)
         
@@ -37,9 +39,9 @@ struct
         
   end
 
-  let elf_parse = B.elf_parse_
+  let elf_parse : string -> ELFBinary.t = B.elf_parse_
 
-  let elf_destroy = B.elf_binary_destroy_
+  let elf_destroy : ELFBinary.t -> unit = B.elf_binary_destroy_
 
 end
          
