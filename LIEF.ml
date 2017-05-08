@@ -13,5 +13,22 @@ struct
   let elf_get_name elf_binary =
     getf (!@ elf_binary) (B.E.ElfBinary.name)
 
+  let elf_get_sections elf_binary =
+    let open B.E in
+    let sections = getf (!@ elf_binary) (ElfBinary.sections) in
+    let rec loop acc p =
+      match Ffi_generated_types.coerce (ptr ElfSection.elf_section_t) (Ffi_generated_types.ptr_opt ElfSection.elf_section_t) !@p with
+      | None -> List.rev acc
+      | Some s -> loop (s :: acc) (p +@ 1)
+    in
+    loop [] sections
+
+  module ELFSection =
+  struct
+
+    let get_name elf_section =
+      getf (!@ elf_section) (B.E.ElfSection.name)
+
+  end
 end
          
