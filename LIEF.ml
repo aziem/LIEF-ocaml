@@ -42,6 +42,8 @@ struct
   
   module ELFSection =
   struct
+
+    type t = Ffi_bindings.elf_section_t structure ptr
     
     let get_name elf_section =
       getf (!@ elf_section) (B.E.ElfSection.name)
