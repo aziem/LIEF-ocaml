@@ -35,12 +35,6 @@ struct
         | Some s -> loop (i+1) (p +@ 1)
       in
       loop 0 sections
-       
-  end
-
-  module ELFSegment =
-  struct
-    type t = Ffi_bindings.elf_segment_t structure ptr
 
     let elf_get_segments elf_binary =
       let open B.E in
@@ -61,6 +55,12 @@ struct
         | Some s -> loop (i+1) (p +@ 1)
       in
       loop 0 segs
+
+  end
+
+  module ELFSegment =
+  struct
+    type t = Ffi_bindings.elf_segment_t structure ptr
 
   end
   
