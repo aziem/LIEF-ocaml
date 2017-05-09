@@ -1,6 +1,9 @@
 open Ctypes
 
-type elf_binary_t 
+type elf_binary_t
+type elf_segment_t
+type elf_section_t
+
 type elf_identity =
   | EI_MAG0
   | EI_MAG1
@@ -1486,7 +1489,6 @@ struct
 
   module ElfSection =
   struct
-    type elf_section_t
     let elf_section_t : elf_section_t Ctypes.structure T.typ = T.structure "Elf_Section_t"
     let name = T.field elf_section_t "name" (T.string)
     let flags = T.field elf_section_t "flags" (T.uint32_t)
@@ -1506,7 +1508,6 @@ struct
 
   module ElfSegment =
   struct
-    type elf_segment_t
     let elf_segment_t : elf_segment_t Ctypes.structure T.typ = T.structure "Elf_Segment_t"
     let type_ = T.field elf_segment_t "type" (ElfEnums.elf_segment_types)
     let flags = T.field elf_segment_t "flags" (T.uint32_t)
