@@ -38,6 +38,30 @@ struct
        
   end
 
+  module ELFSegment =
+  struct
+    type t = Ffi_bindings.elf_segment_t structure ptr
+
+    let elf_get_segments elf_binary =
+      let open B.E in
+      let segs = getf (!@ elf_binary) (ElfBinary.segments) in
+      let rec loop acc p =
+        match FT.coerce (ptr ElfSegment.elf_segment_t) (FT.ptr_opt ElfSegment.elf_segment_t) !@p with
+        | None -> List.rev acc
+        | Some s -> loop (s :: acc) (p +@ 1)
+      in
+      loop [] segs
+
+    let elf_get_num_of_segments elf_binary = 
+      let open B.E in
+      let segs = getf (!@ elf_binary) (ElfBinary.segments) in
+      let rec loop i p =
+        match FT.coerce (ptr ElfSegment.elf_segment_t) (FT.ptr_opt ElfSegment.elf_segment_t) !@p with
+        | None -> i
+        | Some s -> loop (i+1) (p +@ 1)
+      in
+      loop 0 segs
+
   end
   
   module ELFSection =
