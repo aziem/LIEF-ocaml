@@ -27,7 +27,16 @@ struct
       loop [] sections
         
     let elf_get_num_of_sections elf_binary =
-      List.length (elf_get_sections elf_binary)
+      let open B.E in
+      let sections = getf (!@ elf_binary) (ElfBinary.sections) in
+      let rec loop i p =
+        match FT.coerce (ptr ElfSection.elf_section_t) (FT.ptr_opt ElfSection.elf_section_t) !@p with
+        | None -> i
+        | Some s -> loop (i+1) (p +@ 1)
+      in
+      loop 0 sections
+       
+  end
 
   end
   
