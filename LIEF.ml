@@ -15,6 +15,14 @@ struct
     
     let elf_binary_get_name elf_binary =
       getf (!@ elf_binary) (B.E.ElfBinary.name)
+
+
+    let elf_binary_get_header elf_binary =
+      getf (!@ elf_binary) (B.E.ElfBinary.handler)
+
+    let elf_binary_get_entry_point elf_binary =
+      let hdr = getf (!@ elf_binary) (B.E.ElfBinary.header) in
+      getf hdr (B.E.ElfHeader.entrypoint)
         
     let elf_get_sections elf_binary =
       let open B.E in
