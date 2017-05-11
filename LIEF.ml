@@ -7,6 +7,69 @@ module F = Ffi_generated
 
 module ELF =
 struct
+  module ELFSegment =
+  struct
+    type t = Ffi_bindings.elf_segment_t structure ptr
+
+  end
+  
+  module ELFSection =
+  struct
+
+    type t = Ffi_bindings.elf_section_t structure ptr
+
+    type section_types = Ffi_bindings.elf_section_types = 
+      | SHT_NULL
+      | SHT_PROGBITS
+      | SHT_SYMTAB
+      | SHT_STRTAB
+      | SHT_RELA
+      | SHT_HASH
+      | SHT_DYNAMIC
+      | SHT_NOTE
+      | SHT_NOBITS
+      | SHT_REL
+      | SHT_SHLIB
+      | SHT_DYNSYM
+      | SHT_INIT_ARRAY
+      | SHT_FINI_ARRAY
+      | SHT_PREINIT_ARRAY
+      | SHT_GROUP
+      | SHT_SYMTAB_SHNDX
+      | SHT_LOOS
+      | SHT_GNU_ATTRIBUTES
+      | SHT_GNU_HASH
+      | SHT_GNU_verdef
+      | SHT_GNU_verneed
+      | SHT_GNU_versym
+      | SHT_HIOS
+      | SHT_LOPROC
+      | SHT_ARM_EXIDX
+      | SHT_ARM_PREEMPTMAP
+      | SHT_ARM_ATTRIBUTES
+      | SHT_ARM_DEBUGOVERLAY
+      | SHT_ARM_OVERLAYSECTION
+      | SHT_HEX_ORDERED
+      | SHT_X86_64_UNWIND
+      | SHT_MIPS_REGINFO
+      | SHT_MIPS_OPTIONS
+      | SHT_MIPS_ABIFLAGS
+      | SHT_HIPROC
+      | SHT_LOUSER
+      | SHT_HIUSER
+
+    
+    let get_name elf_section =
+      getf (!@ elf_section) (B.E.ElfSection.name)
+
+    let get_flags elf_section =
+      getf (!@ elf_section) (B.E.ElfSection.flags)
+
+    let get_type elf_section =
+      getf (!@ elf_section) (B.E.ElfSection.type_)
+        
+  end
+
 
   module ELFBinary =
   struct
@@ -64,22 +127,6 @@ struct
       in
       loop 0 segs
 
-  end
-
-  module ELFSegment =
-  struct
-    type t = Ffi_bindings.elf_segment_t structure ptr
-
-  end
-  
-  module ELFSection =
-  struct
-
-    type t = Ffi_bindings.elf_section_t structure ptr
-    
-    let get_name elf_section =
-      getf (!@ elf_section) (B.E.ElfSection.name)
-        
   end
 
   let elf_parse : string -> ELFBinary.t = B.elf_parse_
