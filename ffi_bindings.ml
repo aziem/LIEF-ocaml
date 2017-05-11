@@ -1520,6 +1520,51 @@ struct
     let () = T.seal elf_segment_t 
   end
 
+  module ElfDynamicEntry =
+  struct
+    type elf_dynamic_entry_t
+    let elf_dynamic_entry_t : elf_dynamic_entry_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_t"
+    let tag = T.field elf_dynamic_entry_t "tag" (ElfEnums.elf_dynamic_tags)
+    let value = T.field elf_dynamic_entry_t "value" (T.uint64_t)
+    let () = T.seal elf_dynamic_entry_t
+
+    type elf_dynamic_entry_library_t
+    let elf_dynamic_entry_library_t : elf_dynamic_entry_library_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_Library_t"
+    let tag = T.field elf_dynamic_entry_library_t "tag" (ElfEnums.elf_dynamic_tags)
+    let value = T.field elf_dynamic_entry_library_t "value" (T.uint64_t)
+    let name = T.field elf_dynamic_entry_library_t "name" (T.string)
+    let () = T.seal elf_dynamic_entry_library_t
+
+    type elf_dynamic_entry_sharedobject_t
+    let elf_dynamic_entry_sharedobject_t : elf_dynamic_entry_sharedobject_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_SharedObject_t"
+    let tag = T.field elf_dynamic_entry_sharedobject_t "tag" (ElfEnums.elf_dynamic_tags)
+    let value = T.field elf_dynamic_entry_sharedobject_t "value" (T.uint64_t)
+    let name = T.field elf_dynamic_entry_sharedobject_t "name" (T.string)
+    let () = T.seal elf_dynamic_entry_sharedobject_t
+
+    type elf_dynamic_entry_array_t
+    let elf_dynamic_entry_array_t : elf_dynamic_entry_array_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_Array_t"
+    let tag = T.field elf_dynamic_entry_array_t "tag" (ElfEnums.elf_dynamic_tags)
+    let value = T.field elf_dynamic_entry_array_t "value" (T.uint64_t)
+    let array = T.field elf_dynamic_entry_array_t "array" (T.uint64_t)
+    let () = T.seal elf_dynamic_entry_array_t
+
+    type elf_dynamic_entry_r_t
+    let elf_dynamic_entry_r_t : elf_dynamic_entry_r_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_Rpath_t"
+    let tag = T.field elf_dynamic_entry_r_t "tag" (ElfEnums.elf_dynamic_tags)
+    let value = T.field elf_dynamic_entry_r_t "value" (T.uint64_t)
+    let rpath = T.field elf_dynamic_entry_r_t "rpath" (T.string)
+    let () = T.seal elf_dynamic_entry_r_t
+
+
+    type elf_dynamic_entry_runpath_t
+    let elf_dynamic_entry_runpath_t : elf_dynamic_entry_runpath_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_RunPath_t"
+    let tag = T.field elf_dynamic_entry_runpath_t "tag" (ElfEnums.elf_dynamic_tags)
+    let value = T.field elf_dynamic_entry_runpath_t "value" (T.uint64_t)
+    let runpath = T.field elf_dynamic_entry_runpath_t "runpath" (T.string)
+    let () = T.seal elf_dynamic_entry_runpath_t
+
+  end
 
   module ElfBinary =
   struct
@@ -1531,8 +1576,8 @@ struct
     let header = T.field elf_binary_t "header" ElfHeader.elf_header_t
     let sections = T.field elf_binary_t "sections" (T.ptr (T.ptr ElfSection.elf_section_t))
     let segments = T.field elf_binary_t "segments" (T.ptr (T.ptr ElfSegment.elf_segment_t))
+    let dyn_entries = T.field elf_binary_t "dynamic_entries" (T.ptr (T.ptr ElfDynamicEntry.elf_dynamic_entry_t))
     (* TODO fix the entries below with non-void types*)
-    let dyn_entries = T.field elf_binary_t "dynamic_entries" (T.ptr (T.ptr T.void))
     let dyn_symbols = T.field elf_binary_t "dynamic_symbols" (T.ptr (T.ptr T.void))
     let static_symbols = T.field elf_binary_t "static_symbols" (T.ptr (T.ptr T.void))
     let () = T.seal elf_binary_t
