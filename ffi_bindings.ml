@@ -3,6 +3,7 @@ open Ctypes
 type elf_binary_t
 type elf_segment_t
 type elf_section_t
+type elf_symbol_t 
 
 type elf_identity =
   | EI_MAG0
@@ -504,6 +505,29 @@ type elf_dynamic_flags =
   | DF_BIND_NOW
   | DF_STATIC_TLS
 
+type elf_symbol_types = 
+  | STT_NOTYPE
+  | STT_OBJECT
+  | STT_FUNC
+  | STT_SECTION
+  | STT_FILE
+  | STT_COMMON
+  | STT_TLS
+  | STT_GNU_IFUNC
+  | STT_LOOS
+  | STT_HIOS
+  | STT_LOPROC
+  | STT_HIPROC
+
+type elf_symbol_bindings = 
+| STB_LOCAL
+| STB_GLOBAL
+| STB_WEAK
+| STB_GNU_UNIQUE
+| STB_LOOS
+| STB_HIOS
+| STB_LOPROC
+| STB_HIPROC
 
 
 module Enums (T : Cstubs_structs.TYPE) =
@@ -1287,11 +1311,11 @@ struct
     let pf_maskproc = T.constant "PF_MASKPROC" T.int64_t
 
     let elf_segment_flags = T.enum "SEGMENT_FLAGS" [
-	 PF_X, pf_x;
-	 PF_W, pf_w;
-	 PF_R, pf_r;
-	 PF_MASKOS, pf_maskos;
-	 PF_MASKPROC, pf_maskproc;
+	PF_X, pf_x;
+	PF_W, pf_w;
+	PF_R, pf_r;
+	PF_MASKOS, pf_maskos;
+	PF_MASKPROC, pf_maskproc;
       ]
 
     let dt_null = T.constant "DT_NULL" T.int64_t
@@ -1481,8 +1505,52 @@ struct
 	DT_MIPS_RWPLT, dt_mips_rwplt;
       ]
 
+    let stt_notype = T.constant "STT_NOTYPE" T.int64_t
+    let stt_object = T.constant "STT_OBJECT" T.int64_t
+    let stt_func = T.constant "STT_FUNC" T.int64_t
+    let stt_section = T.constant "STT_SECTION" T.int64_t
+    let stt_file = T.constant "STT_FILE" T.int64_t
+    let stt_common = T.constant "STT_COMMON" T.int64_t
+    let stt_tls = T.constant "STT_TLS" T.int64_t
+    let stt_gnu_ifunc = T.constant "STT_GNU_IFUNC" T.int64_t
+    let stt_loos = T.constant "STT_LOOS" T.int64_t
+    let stt_hios = T.constant "STT_HIOS" T.int64_t
+    let stt_loproc = T.constant "STT_LOPROC" T.int64_t
+    let stt_hiproc = T.constant "STT_HIPROC" T.int64_t
+    let elf_symbol_types = T.enum "SYMBOL_TYPES" [
+	STT_NOTYPE, stt_notype;
+	STT_OBJECT, stt_object;
+	STT_FUNC, stt_func;
+	STT_SECTION, stt_section;
+	STT_FILE, stt_file;
+	STT_COMMON, stt_common;
+	STT_TLS, stt_tls;
+	STT_GNU_IFUNC, stt_gnu_ifunc;
+	STT_LOOS, stt_loos;
+	STT_HIOS, stt_hios;
+	STT_LOPROC, stt_loproc;
+	STT_HIPROC, stt_hiproc;
+      ]
 
-
+let stb_local = T.constant "STB_LOCAL" T.int64_t
+let stb_global = T.constant "STB_GLOBAL" T.int64_t
+let stb_weak = T.constant "STB_WEAK" T.int64_t
+let stb_gnu_unique = T.constant "STB_GNU_UNIQUE" T.int64_t
+let stb_loos = T.constant "STB_LOOS" T.int64_t
+let stb_hios = T.constant "STB_HIOS" T.int64_t
+let stb_loproc = T.constant "STB_LOPROC" T.int64_t
+let stb_hiproc = T.constant "STB_HIPROC" T.int64_t
+let elf_symbol_bindings = T.enum "SYMBOL_BINDINGS" [
+	 STB_LOCAL, stb_local;
+	 STB_GLOBAL, stb_global;
+	 STB_WEAK, stb_weak;
+	 STB_GNU_UNIQUE, stb_gnu_unique;
+	 STB_LOOS, stb_loos;
+	 STB_HIOS, stb_hios;
+	 STB_LOPROC, stb_loproc;
+	 STB_HIPROC, stb_hiproc;
+]
+    
   end
 
   module ElfHeader =
@@ -1589,6 +1657,22 @@ struct
 
   end
 
+  module ElfSymbol =
+  struct
+    let elf_symbol_t : elf_symbol_t Ctypes.structure T.typ = T.structure "Elf_Symbol_t"
+    let name = T.field elf_symbol_t "name" (T.string)
+    let type_ = T.field elf_symbol_t "type" (ElfEnums.elf_symbol_types)
+    let binding = T.field elf_symbol_t "binding" (ElfEnums.elf_symbol_bindings)
+    let info = T.field elf_symbol_t "information" (T.uint8_t)
+    let other = T.field elf_symbol_t "other" (T.uint8_t)
+    let shndx = T.field elf_symbol_t "shndx" (T.uint16_t)
+    let value = T.field elf_symbol_t "value" (T.uint64_t)
+    let size = T.field elf_symbol_t "size" (T.uint64_t)
+    let () = T.seal elf_symbol_t 
+
+  end
+
+
   module ElfBinary =
   struct
     let elf_binary_t : elf_binary_t Ctypes.structure T.typ = T.structure "Elf_Binary_t"
@@ -1600,9 +1684,8 @@ struct
     let sections = T.field elf_binary_t "sections" (T.ptr (T.ptr ElfSection.elf_section_t))
     let segments = T.field elf_binary_t "segments" (T.ptr (T.ptr ElfSegment.elf_segment_t))
     let dyn_entries = T.field elf_binary_t "dynamic_entries" (T.ptr (T.ptr ElfDynamicEntry.elf_dynamic_entry_t))
-    (* TODO fix the entries below with non-void types*)
-    let dyn_symbols = T.field elf_binary_t "dynamic_symbols" (T.ptr (T.ptr T.void))
-    let static_symbols = T.field elf_binary_t "static_symbols" (T.ptr (T.ptr T.void))
+    let dyn_symbols = T.field elf_binary_t "dynamic_symbols" (T.ptr (T.ptr ElfSymbol.elf_symbol_t))
+    let static_symbols = T.field elf_binary_t "static_symbols" (T.ptr (T.ptr ElfSymbol.elf_symbol_t))
     let () = T.seal elf_binary_t
 
   end
