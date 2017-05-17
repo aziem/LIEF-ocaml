@@ -7,6 +7,14 @@ module F = Ffi_generated
 
 module ELF =
 struct
+
+
+  module ELFSymbol =
+  struct
+    type t = Ffi_bindings.elf_symbol_t structure ptr
+  end
+
+  
   module ELFSegment =
   struct
     type t = Ffi_bindings.elf_segment_t structure ptr
