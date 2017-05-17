@@ -198,6 +198,27 @@ struct
       in
       loop 0 segs
 
+    let elf_get_dynamic_symbols elf_binary =
+      let open B.E in
+      let dynsyms = getf (!@ elf_binary) ElfBinary.dyn_symbols in
+      let rec loop acc p =
+        match FT.coerce (ptr ElfSymbol.elf_symbol_t) (FT.ptr_opt ElfSymbol.elf_symbol_t) !@p with
+        | None -> List.rev acc
+        | Some s -> loop (s :: acc) (p +@ 1)
+      in
+      loop [] dynsyms
+
+    let elf_get_static_symbols elf_binary =
+      let open B.E in
+      let staticsyms = getf (!@ elf_binary) ElfBinary.static_symbols in
+      let rec loop acc p =
+        match FT.coerce (ptr ElfSymbol.elf_symbol_t) (FT.ptr_opt ElfSymbol.elf_symbol_t) !@p with
+        | None -> List.rev acc
+        | Some s -> loop (s :: acc) (p +@ 1)
+      in
+      loop [] staticsyms
+
+
   end
 
   let elf_parse : string -> ELFBinary.t = B.elf_parse_
