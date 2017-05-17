@@ -11,6 +11,69 @@ struct
   struct
     type t = Ffi_bindings.elf_segment_t structure ptr
 
+    type segment_types =  Ffi_bindings.elf_segment_types = 
+      | PT_NULL
+      | PT_LOAD
+      | PT_DYNAMIC
+      | PT_INTERP
+      | PT_NOTE
+      | PT_SHLIB
+      | PT_PHDR
+      | PT_TLS
+      | PT_LOOS
+      | PT_HIOS
+      | PT_LOPROC
+      | PT_HIPROC
+      | PT_GNU_EH_FRAME
+      | PT_SUNW_EH_FRAME
+      | PT_SUNW_UNWIND
+      | PT_GNU_STACK
+      | PT_GNU_RELRO
+      | PT_ARM_ARCHEXT
+      | PT_ARM_EXIDX
+      | PT_ARM_UNWIND
+      | PT_MIPS_REGINFO
+      | PT_MIPS_RTPROC
+      | PT_MIPS_OPTIONS
+      | PT_MIPS_ABIFLAGS
+
+
+    type segment_flags = Ffi_bindings.elf_segment_flags = 
+      | PF_X
+      | PF_W
+      | PF_R
+      | PF_MASKOS
+      | PF_MASKPROC
+
+    let get_flag_value f =
+      match f with 
+      | PF_X -> B.E.ElfEnums.pf_x
+      | PF_W -> B.E.ElfEnums.pf_w
+      | PF_R -> B.E.ElfEnums.pf_r 
+      | PF_MASKOS -> B.E.ElfEnums.pf_maskos
+      | PF_MASKPROC -> B.E.ElfEnums.pf_maskproc 
+
+    
+    let get_type seg =
+      getf (!@ seg) B.E.ElfSegment.type_
+
+    let get_flags seg =
+      getf (!@ seg) B.E.ElfSegment.flags
+    
+    let get_virtual_address seg =
+      getf (!@ seg) B.E.ElfSegment.virtual_address
+
+    let get_virtual_size seg =
+      getf (!@ seg) B.E.ElfSegment.virtual_size
+
+    let get_offset seg =
+      getf (!@ seg) B.E.ElfSegment.offset
+
+    let has_flag seg flag =
+      let v = get_flag_value flag in
+      let ft = get_flags seg in
+      Unsigned.UInt32.zero != Unsigned.UInt32.logand Unsigned.(UInt32.of_int64 v) ft
+      
   end
   
   module ELFSection =
