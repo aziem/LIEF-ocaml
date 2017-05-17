@@ -520,14 +520,14 @@ type elf_symbol_types =
   | STT_HIPROC
 
 type elf_symbol_bindings = 
-| STB_LOCAL
-| STB_GLOBAL
-| STB_WEAK
-| STB_GNU_UNIQUE
-| STB_LOOS
-| STB_HIOS
-| STB_LOPROC
-| STB_HIPROC
+  | STB_LOCAL
+  | STB_GLOBAL
+  | STB_WEAK
+  | STB_GNU_UNIQUE
+  | STB_LOOS
+  | STB_HIOS
+  | STB_LOPROC
+  | STB_HIPROC
 
 
 module Enums (T : Cstubs_structs.TYPE) =
@@ -1532,25 +1532,25 @@ struct
 	STT_HIPROC, stt_hiproc;
       ]
 
-let stb_local = T.constant "STB_LOCAL" T.int64_t
-let stb_global = T.constant "STB_GLOBAL" T.int64_t
-let stb_weak = T.constant "STB_WEAK" T.int64_t
-let stb_gnu_unique = T.constant "STB_GNU_UNIQUE" T.int64_t
-let stb_loos = T.constant "STB_LOOS" T.int64_t
-let stb_hios = T.constant "STB_HIOS" T.int64_t
-let stb_loproc = T.constant "STB_LOPROC" T.int64_t
-let stb_hiproc = T.constant "STB_HIPROC" T.int64_t
-let elf_symbol_bindings = T.enum "SYMBOL_BINDINGS" [
-	 STB_LOCAL, stb_local;
-	 STB_GLOBAL, stb_global;
-	 STB_WEAK, stb_weak;
-	 STB_GNU_UNIQUE, stb_gnu_unique;
-	 STB_LOOS, stb_loos;
-	 STB_HIOS, stb_hios;
-	 STB_LOPROC, stb_loproc;
-	 STB_HIPROC, stb_hiproc;
-]
-    
+    let stb_local = T.constant "STB_LOCAL" T.int64_t
+    let stb_global = T.constant "STB_GLOBAL" T.int64_t
+    let stb_weak = T.constant "STB_WEAK" T.int64_t
+    let stb_gnu_unique = T.constant "STB_GNU_UNIQUE" T.int64_t
+    let stb_loos = T.constant "STB_LOOS" T.int64_t
+    let stb_hios = T.constant "STB_HIOS" T.int64_t
+    let stb_loproc = T.constant "STB_LOPROC" T.int64_t
+    let stb_hiproc = T.constant "STB_HIPROC" T.int64_t
+    let elf_symbol_bindings = T.enum "SYMBOL_BINDINGS" [
+	STB_LOCAL, stb_local;
+	STB_GLOBAL, stb_global;
+	STB_WEAK, stb_weak;
+	STB_GNU_UNIQUE, stb_gnu_unique;
+	STB_LOOS, stb_loos;
+	STB_HIOS, stb_hios;
+	STB_LOPROC, stb_loproc;
+	STB_HIPROC, stb_hiproc;
+      ]
+
   end
 
   module ElfHeader =
