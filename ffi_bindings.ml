@@ -394,6 +394,15 @@ type elf_segment_types =
   | PT_MIPS_OPTIONS
   | PT_MIPS_ABIFLAGS
 
+type elf_segment_flags = 
+  | PF_X
+  | PF_W
+  | PF_R
+  | PF_MASKOS
+  | PF_MASKPROC
+
+
+
 type elf_dynamic_tags = 
   | DT_NULL
   | DT_NEEDED
@@ -1269,6 +1278,20 @@ struct
 	PT_MIPS_RTPROC, pt_mips_rtproc;
 	PT_MIPS_OPTIONS, pt_mips_options;
 	PT_MIPS_ABIFLAGS, pt_mips_abiflags;
+      ]
+
+    let pf_x = T.constant "PF_X" T.int64_t
+    let pf_w = T.constant "PF_W" T.int64_t
+    let pf_r = T.constant "PF_R" T.int64_t
+    let pf_maskos = T.constant "PF_MASKOS" T.int64_t
+    let pf_maskproc = T.constant "PF_MASKPROC" T.int64_t
+
+    let elf_segment_flags = T.enum "SEGMENT_FLAGS" [
+	 PF_X, pf_x;
+	 PF_W, pf_w;
+	 PF_R, pf_r;
+	 PF_MASKOS, pf_maskos;
+	 PF_MASKPROC, pf_maskproc;
       ]
 
     let dt_null = T.constant "DT_NULL" T.int64_t
