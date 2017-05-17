@@ -12,6 +12,10 @@ struct
   module ELFSymbol =
   struct
     type t = Ffi_bindings.elf_symbol_t structure ptr
+
+    let get_name sym =
+      getf (!@ sym) B.E.ElfSymbol.name
+    
   end
 
   
