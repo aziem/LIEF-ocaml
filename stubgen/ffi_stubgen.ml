@@ -14,5 +14,5 @@ let _ =
   | true, false ->
     Cstubs.write_ml Format.std_formatter ~prefix (module B)
   | false, true ->
-    print_endline ("#include " ^  Config.lief_header_loc);
+    print_endline (Config.lief_header_loc);
     Cstubs.write_c Format.std_formatter ~prefix (module B); 

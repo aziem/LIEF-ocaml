@@ -13,7 +13,7 @@ Library lief
   Install: true
   Path: lib
   Modules: LIEF
-  InternalModules: Ffi_generated, Ffi_generated_types
+  InternalModules: Ffi_generated, Ffi_generated_types, Elf
   CSources: ffi_generated_stubs.c
   CCLib: -lLIEF
   CCOpt: -I $pkg_ctypes_stubs
