@@ -857,6 +857,17 @@ type pe_types =
   | PE32_PLUS
 
 
+
+type pe_dosheader_t
+type pe_header_t
+type pe_optionalheader_t
+type pe_datadirectory_t
+type pe_section_t
+type pe_binary_t
+
+
+
+
 module Enums (T : Cstubs_structs.TYPE) =
 struct
 
@@ -2635,9 +2646,120 @@ struct
     ]
 
   (* PE STRUCTURES *)
+  module PE_DOSHEADER =
+  struct
+    let pe_dosheader_t : pe_dosheader_t Ctypes.structure T.typ = T.structure "Pe_DosHeader_t"
+    let magic                                                  = T.field pe_dosheader_t "magic" (T.uint16_t)
+    let used_bytes_in_the_last_page                            = T.field pe_dosheader_t "used_bytes_in_the_last_page" (T.uint16_t)
+    let file_size_in_pages                                     = T.field pe_dosheader_t "file_size_in_pages" (T.uint16_t)
+    let numberof_relocation                                    = T.field pe_dosheader_t "numberof_relocation" (T.uint16_t)
+    let header_size_in_paragraphs                              = T.field pe_dosheader_t "header_size_in_paragraphs" (T.uint16_t)
+    let minimum_extra_paragraphs                               = T.field pe_dosheader_t "minimum_extra_paragraphs" (T.uint16_t)
+    let maximum_extra_paragraphs                               = T.field pe_dosheader_t "maximum_extra_paragraphs" (T.uint16_t)
+    let initial_relative_ss                                    = T.field pe_dosheader_t "initial_relative_ss" (T.uint16_t)
+    let initial_sp                                             = T.field pe_dosheader_t "initial_sp" (T.uint16_t)
+    let checksum                                               = T.field pe_dosheader_t "checksum" (T.uint16_t)
+    let initial_ip                                             = T.field pe_dosheader_t "initial_ip" (T.uint16_t)
+    let initial_relative_cs                                    = T.field pe_dosheader_t "initial_relative_cs" (T.uint16_t)
+    let addressof_relocation_table                             = T.field pe_dosheader_t "addressof_relocation_table" (T.uint16_t)
+    let overlay_number                                         = T.field pe_dosheader_t "overlay_number" (T.uint16_t)
+    let reserved                                               = Array.init 4 (fun i -> T.field pe_dosheader_t "reserved" (T.uint16_t))
+    let oem_id                                                 = T.field pe_dosheader_t "oem_id" (T.uint16_t)
+    let oem_info                                               = T.field pe_dosheader_t "oem_info" (T.uint16_t)
+    let reserved2                                              = Array.init 10 (fun i -> T.field pe_dosheader_t "reserved2" (T.uint16_t))
+    let addressof_new_exeheader                                = T.field pe_dosheader_t "addressof_new_exeheader" (T.uint32_t)
+    let () = T.seal pe_dosheader_t
+  end
 
 
-  
+  module PE_HEADER =
+  struct
+    let pe_header_t : pe_header_t Ctypes.structure T.typ = T.structure "Pe_Header_t"
+    let signature = T.field pe_header_t "signature" (T.ptr T.void)
+    let machine = T.field pe_header_t "machine" (machine_types)
+    let numberof_sections = T.field pe_header_t "numberof_sections" (T.uint16_t)
+    let time_date_stamp = T.field pe_header_t "time_date_stamp" (T.uint32_t)
+    let pointerto_symbol_table = T.field pe_header_t "pointerto_symbol_table" (T.uint32_t)
+    let numberof_symbols = T.field pe_header_t "numberof_symbols" (T.uint32_t)
+    let sizeof_optional_header = T.field pe_header_t "sizeof_optional_header" (T.uint16_t)
+    let characteristics = T.field pe_header_t "characteristics" (T.uint16_t)
+    let () = T.seal pe_header_t
+  end
+
+
+  module PE_OPTIONALHEADER =
+  struct
+    let pe_optionalheader_t : pe_optionalheader_t Ctypes.structure T.typ = T.structure "Pe_OptionalHeader_t"
+    let magic = T.field pe_optionalheader_t "magic" (pe_types)
+    let major_linker_version = T.field pe_optionalheader_t "major_linker_version" (T.uint8_t)
+    let minor_linker_version = T.field pe_optionalheader_t "minor_linker_version" (T.uint8_t)
+    let sizeof_code = T.field pe_optionalheader_t "sizeof_code" (T.uint32_t)
+    let sizeof_initialized_data = T.field pe_optionalheader_t "sizeof_initialized_data" (T.uint32_t)
+    let sizeof_uninitialized_data = T.field pe_optionalheader_t "sizeof_uninitialized_data" (T.uint32_t)
+    let addressof_entrypoint = T.field pe_optionalheader_t "addressof_entrypoint" (T.uint32_t)
+    let baseof_code = T.field pe_optionalheader_t "baseof_code" (T.uint32_t)
+    let baseof_data = T.field pe_optionalheader_t "baseof_data" (T.uint32_t)
+    let imagebase = T.field pe_optionalheader_t "imagebase" (T.uint64_t)
+    let section_alignment = T.field pe_optionalheader_t "section_alignment" (T.uint32_t)
+    let file_alignment = T.field pe_optionalheader_t "file_alignment" (T.uint32_t)
+    let major_operating_system_version = T.field pe_optionalheader_t "major_operating_system_version" (T.uint16_t)
+    let minor_operating_system_version = T.field pe_optionalheader_t "minor_operating_system_version" (T.uint16_t)
+    let major_image_version = T.field pe_optionalheader_t "major_image_version" (T.uint16_t)
+    let minor_image_version = T.field pe_optionalheader_t "minor_image_version" (T.uint16_t)
+    let major_subsystem_version = T.field pe_optionalheader_t "major_subsystem_version" (T.uint16_t)
+    let minor_subsystem_version = T.field pe_optionalheader_t "minor_subsystem_version" (T.uint16_t)
+    let win32_version_value = T.field pe_optionalheader_t "win32_version_value" (T.uint32_t)
+    let sizeof_image = T.field pe_optionalheader_t "sizeof_image" (T.uint32_t)
+    let sizeof_headers = T.field pe_optionalheader_t "sizeof_headers" (T.uint32_t)
+    let checksum = T.field pe_optionalheader_t "checksum" (T.uint32_t)
+    let subsystem = T.field pe_optionalheader_t "subsystem" (subsystem)
+    let dll_characteristics = T.field pe_optionalheader_t "dll_characteristics" (T.uint32_t)
+    let sizeof_stack_reserve = T.field pe_optionalheader_t "sizeof_stack_reserve" (T.uint64_t)
+    let sizeof_stack_commit = T.field pe_optionalheader_t "sizeof_stack_commit" (T.uint64_t)
+    let sizeof_heap_reserve = T.field pe_optionalheader_t "sizeof_heap_reserve" (T.uint64_t)
+    let sizeof_heap_commit = T.field pe_optionalheader_t "sizeof_heap_commit" (T.uint64_t)
+    let loader_flags = T.field pe_optionalheader_t "loader_flags" (T.uint32_t)
+    let numberof_rva_and_size = T.field pe_optionalheader_t "numberof_rva_and_size" (T.uint32_t)
+    let () = T.seal pe_optionalheader_t
+  end
+
+  module PE_DATA_DIRECTORY =
+  struct
+    let pe_datadirectory_t : pe_datadirectory_t Ctypes.structure T.typ = T.structure "Pe_DataDirectory_t"
+    let rva = T.field pe_datadirectory_t "rva" (T.uint32_t)
+    let size = T.field pe_datadirectory_t "size" (T.uint32_t)
+    let () = T.seal pe_datadirectory_t
+  end
+
+  module PE_SECTION =
+  struct
+    let pe_section_t : pe_section_t Ctypes.structure T.typ = T.structure "Pe_Section_t"
+    let name = T.field pe_section_t "name" (T.string)
+    let virtual_address = T.field pe_section_t "virtual_address" (T.uint64_t)
+    let size = T.field pe_section_t "size" (T.uint64_t)
+    let offset = T.field pe_section_t "offset" (T.uint64_t)
+    let virtual_size = T.field pe_section_t "virtual_size" (T.uint32_t)
+    let pointerto_relocation = T.field pe_section_t "pointerto_relocation" (T.uint32_t)
+    let pointerto_line_numbers = T.field pe_section_t "pointerto_line_numbers" (T.uint32_t)
+    let characteristics = T.field pe_section_t "characteristics" (T.uint32_t)
+    let content = T.field pe_section_t "content" (T.ptr T.uint8_t)
+    let entropy = T.field pe_section_t "entropy" (T.double)
+    let () = T.seal pe_section_t
+  end
+
+  module PE_BINARY =
+  struct
+    let pe_binary_t : pe_binary_t Ctypes.structure T.typ = T.structure "Pe_Binary_t"
+    let handler = T.field pe_binary_t "handler" (T.ptr T.void )
+    let name = T.field pe_binary_t "name" (T.string)
+    let dos_header = T.field pe_binary_t "dos_header" (PE_DOSHEADER.pe_dosheader_t)
+    let header = T.field pe_binary_t "header" (PE_HEADER.pe_header_t)
+    let optional_header = T.field pe_binary_t "optional_header" (PE_OPTIONALHEADER.pe_optionalheader_t)
+    let data_directories = T.field pe_binary_t "data_directories" (T.ptr (T.ptr PE_DATA_DIRECTORY.pe_datadirectory_t))
+    let sections = T.field pe_binary_t "sections" (T.ptr (T.ptr PE_SECTION.pe_section_t))
+    let () = T.seal pe_binary_t
+  end
+
 
 end   
 
