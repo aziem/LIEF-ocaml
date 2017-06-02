@@ -4,6 +4,13 @@ type elf_binary_t
 type elf_segment_t
 type elf_section_t
 type elf_symbol_t 
+type elf_dynamic_entry_t
+
+type elf_dynamic_entry_library_t
+type elf_dynamic_entry_sharedobject_t
+type elf_dynamic_entry_array_t
+type elf_dynamic_entry_r_t
+type elf_dynamic_entry_runpath_t
 
 type elf_identity =
   | EI_MAG0
@@ -1613,34 +1620,29 @@ struct
 
   module ElfDynamicEntry =
   struct
-    type elf_dynamic_entry_t
     let elf_dynamic_entry_t : elf_dynamic_entry_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_t"
     let tag = T.field elf_dynamic_entry_t "tag" (ElfEnums.elf_dynamic_tags)
     let value = T.field elf_dynamic_entry_t "value" (T.uint64_t)
     let () = T.seal elf_dynamic_entry_t
 
-    type elf_dynamic_entry_library_t
     let elf_dynamic_entry_library_t : elf_dynamic_entry_library_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_Library_t"
     let tag = T.field elf_dynamic_entry_library_t "tag" (ElfEnums.elf_dynamic_tags)
     let value = T.field elf_dynamic_entry_library_t "value" (T.uint64_t)
     let name = T.field elf_dynamic_entry_library_t "name" (T.string)
     let () = T.seal elf_dynamic_entry_library_t
 
-    type elf_dynamic_entry_sharedobject_t
     let elf_dynamic_entry_sharedobject_t : elf_dynamic_entry_sharedobject_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_SharedObject_t"
     let tag = T.field elf_dynamic_entry_sharedobject_t "tag" (ElfEnums.elf_dynamic_tags)
     let value = T.field elf_dynamic_entry_sharedobject_t "value" (T.uint64_t)
     let name = T.field elf_dynamic_entry_sharedobject_t "name" (T.string)
     let () = T.seal elf_dynamic_entry_sharedobject_t
 
-    type elf_dynamic_entry_array_t
     let elf_dynamic_entry_array_t : elf_dynamic_entry_array_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_Array_t"
     let tag = T.field elf_dynamic_entry_array_t "tag" (ElfEnums.elf_dynamic_tags)
     let value = T.field elf_dynamic_entry_array_t "value" (T.uint64_t)
     let array = T.field elf_dynamic_entry_array_t "array" (T.uint64_t)
     let () = T.seal elf_dynamic_entry_array_t
 
-    type elf_dynamic_entry_r_t
     let elf_dynamic_entry_r_t : elf_dynamic_entry_r_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_Rpath_t"
     let tag = T.field elf_dynamic_entry_r_t "tag" (ElfEnums.elf_dynamic_tags)
     let value = T.field elf_dynamic_entry_r_t "value" (T.uint64_t)
@@ -1648,7 +1650,6 @@ struct
     let () = T.seal elf_dynamic_entry_r_t
 
 
-    type elf_dynamic_entry_runpath_t
     let elf_dynamic_entry_runpath_t : elf_dynamic_entry_runpath_t Ctypes.structure T.typ = T.structure "Elf_DynamicEntry_RunPath_t"
     let tag = T.field elf_dynamic_entry_runpath_t "tag" (ElfEnums.elf_dynamic_tags)
     let value = T.field elf_dynamic_entry_runpath_t "value" (T.uint64_t)

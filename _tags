@@ -1,0 +1,68 @@
+# OASIS_START
+# DO NOT EDIT (digest: fb8416663568104e0610e0f23cbba79c)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library lief_bindings
+"bindings/lief_bindings.cmxs": use_lief_bindings
+<bindings/*.ml{,i,y}>: package(ctypes.stubs)
+# Library lief
+"lib/lief.cmxs": use_lief
+<lib/*.ml{,i,y}>: oasis_library_lief_ccopt
+"lib/ffi_generated_stubs.c": oasis_library_lief_ccopt
+"lib/lief.cmxa": oasis_library_lief_cclib
+"lib/liblief_stubs.lib": oasis_library_lief_cclib
+"lib/dlllief_stubs.dll": oasis_library_lief_cclib
+"lib/liblief_stubs.a": oasis_library_lief_cclib
+"lib/dlllief_stubs.so": oasis_library_lief_cclib
+"lib/lief.cmxa": use_liblief_stubs
+<lib/*.ml{,i,y}>: package(ctypes)
+<lib/*.ml{,i,y}>: package(ctypes.foreign)
+<lib/*.ml{,i,y}>: package(ctypes.stubs)
+<lib/*.ml{,i,y}>: package(result)
+<lib/*.ml{,i,y}>: package(uchar)
+<lib/*.ml{,i,y}>: use_lief_bindings
+"lib/ffi_generated_stubs.c": package(ctypes)
+"lib/ffi_generated_stubs.c": package(ctypes.foreign)
+"lib/ffi_generated_stubs.c": package(ctypes.stubs)
+"lib/ffi_generated_stubs.c": package(result)
+"lib/ffi_generated_stubs.c": package(uchar)
+"lib/ffi_generated_stubs.c": use_lief_bindings
+# Executable ffi_types_stubgen
+"stubgen/ffi_types_stubgen.native": package(ctypes.stubs)
+"stubgen/ffi_types_stubgen.native": use_lief_bindings
+# Executable ffi_stubgen
+"stubgen/ffi_stubgen.native": package(ctypes.foreign)
+"stubgen/ffi_stubgen.native": package(ctypes.stubs)
+"stubgen/ffi_stubgen.native": use_lief_bindings
+<stubgen/*.ml{,i,y}>: package(ctypes.foreign)
+<stubgen/*.ml{,i,y}>: package(ctypes.stubs)
+<stubgen/*.ml{,i,y}>: use_lief_bindings
+# Executable test
+"test.native": package(ctypes)
+"test.native": package(ctypes.foreign)
+"test.native": package(ctypes.stubs)
+"test.native": package(result)
+"test.native": package(uchar)
+"test.native": use_lief
+"test.native": use_lief_bindings
+<*.ml{,i,y}>: package(ctypes)
+<*.ml{,i,y}>: package(ctypes.foreign)
+<*.ml{,i,y}>: package(ctypes.stubs)
+<*.ml{,i,y}>: package(result)
+<*.ml{,i,y}>: package(uchar)
+<*.ml{,i,y}>: use_lief
+<*.ml{,i,y}>: use_lief_bindings
+# OASIS_STOP
+<lib>: include

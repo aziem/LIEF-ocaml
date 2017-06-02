@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 83914f7d734d062787c99760d74da865) *)
+(* DO NOT EDIT (digest: a5946ea68db3727893ea5448918c868c) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -885,8 +885,9 @@ end
 open Ocamlbuild_plugin;;
 let package_default =
   {
-     MyOCamlbuildBase.lib_ocaml = [("lief", [], [])];
-     lib_c = [("lief", ".", [])];
+     MyOCamlbuildBase.lib_ocaml =
+       [("lief_bindings", ["bindings"], []); ("lief", ["lib"], [])];
+     lib_c = [("lief", "lib", [])];
      flags =
        [
           (["oasis_library_lief_ccopt"; "compile"],
@@ -899,7 +900,8 @@ let package_default =
           (["oasis_library_lief_cclib"; "ocamlmklib"; "c"],
             [(OASISExpr.EBool true, S [A "-lLIEF"])])
        ];
-     includes = []
+     includes =
+       [("stubgen", ["bindings"]); ("lib", ["bindings"]); ("", ["lib"])]
   }
   ;;
 
@@ -907,51 +909,51 @@ let conf = {MyOCamlbuildFindlib.no_automatic_syntax = false}
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default conf package_default;;
 
-# 911 "myocamlbuild.ml"
+# 913 "myocamlbuild.ml"
 (* OASIS_STOP *)
 Ocamlbuild_plugin.dispatch dispatch_default;;
 let dispatch = function
   | After_rules ->
-    let stubgen          = "ffi_stubgen.native" in
-    let stubgen_types    = "ffi_types_stubgen.native" in
-    let stubgen_ml_types = "ffi_ml_types_stubgen.native" in
+    let stubgen          = "stubgen/ffi_stubgen.native" in
+    let stubgen_types    = "stubgen/ffi_types_stubgen.native" in
+    let stubgen_ml_types = "stubgen/ffi_ml_types_stubgen.native" in
 
     rule "generated-types ml"
       ~dep:stubgen_ml_types
-      ~prod:"ffi_generated_types.ml"
+      ~prod:"lib/ffi_generated_types.ml"
       (fun _ _ ->
-         Cmd (S [P ("./" ^ stubgen_ml_types); Sh">>"; A"ffi_generated_types.ml"]));
+         Cmd (S [P ("./" ^ stubgen_ml_types); Sh">>"; A"lib/ffi_generated_types.ml"]));
 
     rule "generated ml"
       ~dep:stubgen
-      ~prod:"ffi_generated.ml"
+      ~prod:"lib/ffi_generated.ml"
       (fun _ _ ->
-         Cmd(S[P ("./" ^ stubgen); A"-ml"; Sh">"; A"ffi_generated.ml"]));
+         Cmd(S[P ("./" ^ stubgen); A"-ml"; Sh">"; A"lib/ffi_generated.ml"]));
 
     rule "generated-types c"
       ~dep:stubgen_types
-      ~prod:"ffi_ml_types_stubgen.c"
+      ~prod:"stubgen/ffi_ml_types_stubgen.c"
       (fun _ _ ->
-         Cmd (S [P ("./" ^ stubgen_types); Sh">"; A"ffi_ml_types_stubgen.c"]));
+         Cmd (S [P ("./" ^ stubgen_types); Sh">"; A"stubgen/ffi_ml_types_stubgen.c"]));
 
     rule "generated-types exe"
-      ~dep:"ffi_ml_types_stubgen.c"
+      ~dep:"stubgen/ffi_ml_types_stubgen.c"
       ~prod:stubgen_ml_types
       (fun _ _ ->
          let env = BaseEnvLight.load () in
          let cc = BaseEnvLight.var_get "bytecomp_c_compiler" env in 
          let stdlib = BaseEnvLight.var_get "standard_library" env in
          let ctypes = BaseEnvLight.var_get "pkg_ctypes_stubs" env in
-         Cmd (S [Sh cc; A"ffi_ml_types_stubgen.c";
+         Cmd (S [Sh cc; A"stubgen/ffi_ml_types_stubgen.c";
                  A"-I"; P ctypes; A"-I"; P stdlib; A"-lLIEF";
                  A"-o"; A stubgen_ml_types])
       );
 
     rule "generated c"
       ~dep:stubgen
-      ~prod:"ffi_generated_stubs.c"
+      ~prod:"lib/ffi_generated_stubs.c"
       (fun _ _ ->
-        Cmd(S[P ("./" ^ stubgen); A"-c"; Sh">"; A"ffi_generated_stubs.c"]));
+        Cmd(S[P ("./" ^ stubgen); A"-c"; Sh">"; A"lib/ffi_generated_stubs.c"]));
     flag ["c"; "compile"] & S[A"-I"; A"lib"; A"-ccopt"; A"-fPIC"; A"-package"; A"ctypes"; A"-package"; A"ctypes.stubs"]
 
   | _ ->

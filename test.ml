@@ -10,5 +10,6 @@ let _ =
 
   let staticsym = ELF.ELFBinary.elf_get_static_symbols elf_file in
   List.iter (fun s -> Printf.printf "Static Symbol: %s\n" (ELF.ELFSymbol.get_name s)) staticsym;
-  
+
+  Printf.printf "Entry point: %s\n" (Unsigned.UInt64.to_string (ELF.ELFBinary.elf_get_entry_point elf_file));
   ELF.elf_destroy elf_file 

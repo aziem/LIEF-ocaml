@@ -9,12 +9,59 @@ module ELF =
 struct
 
 
+  module ELFDynamicEntry =
+  struct
+    type t = Ffi_bindings.elf_dynamic_entry_t
+    type library_t = Ffi_bindings.elf_dynamic_entry_library_t
+    type sharedobject_t = Ffi_bindings.elf_dynamic_entry_sharedobject_t
+    type array_t = Ffi_bindings.elf_dynamic_entry_array_t
+    type r_t = Ffi_bindings.elf_dynamic_entry_r_t
+    type runpath_t = Ffi_bindings.elf_dynamic_entry_runpath_t
+    
+  end
+
   module ELFSymbol =
   struct
     type t = Ffi_bindings.elf_symbol_t structure ptr
 
+    type elf_symbol_types = Ffi_bindings.elf_symbol_types = 
+      | STT_NOTYPE
+      | STT_OBJECT
+      | STT_FUNC
+      | STT_SECTION
+      | STT_FILE
+      | STT_COMMON
+      | STT_TLS
+      | STT_GNU_IFUNC
+      | STT_LOOS
+      | STT_HIOS
+      | STT_LOPROC
+      | STT_HIPROC
+        
     let get_name sym =
       getf (!@ sym) B.E.ElfSymbol.name
+
+    let get_type sym =
+      getf (!@ sym) B.E.ElfSymbol.type_
+
+    let get_binding sym =
+      getf (!@ sym) B.E.ElfSymbol.binding
+
+    let get_information sym =
+      getf (!@ sym) B.E.ElfSymbol.info
+
+    let get_other sym =
+      getf (!@ sym) B.E.ElfSymbol.other
+
+    let get_section_index sym =
+      getf (!@ sym) B.E.ElfSymbol.shndx
+
+    let get_value sym =
+      getf (!@ sym) B.E.ElfSymbol.value
+
+    let get_size sym =
+      getf (!@ sym) B.E.ElfSymbol.size
+    
     
   end
 
@@ -221,6 +268,10 @@ struct
         | Some s -> loop (s :: acc) (p +@ 1)
       in
       loop [] staticsyms
+
+    let elf_get_entry_point elf_binary =
+      let hdr = getf (!@ elf_binary) B.E.ElfBinary.header in
+      getf hdr B.E.ElfHeader.entrypoint
 
 
   end

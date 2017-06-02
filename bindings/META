@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 155121a2c5195554eb4f04cac8794ee4)
+version = "0.1"
+description = "Ctypes bindings to LIEF"
+requires = "ctypes.stubs"
+archive(byte) = "lief_bindings.cma"
+archive(byte, plugin) = "lief_bindings.cma"
+archive(native) = "lief_bindings.cmxa"
+archive(native, plugin) = "lief_bindings.cmxs"
+exists_if = "lief_bindings.cma"
+# OASIS_STOP
+

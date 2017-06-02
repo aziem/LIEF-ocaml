@@ -11,14 +11,21 @@ BuildTools:     ocamlbuild
 Library lief
   FindLibName:  lief
   Install: true
-  Path: .
-  Modules: LIEF, Ffi_bindings 
+  Path: lib
+  Modules: LIEF
   InternalModules: Ffi_generated, Ffi_generated_types
   CSources: ffi_generated_stubs.c
   CCLib: -lLIEF
   CCOpt: -I $pkg_ctypes_stubs
-  BuildDepends:     ctypes, uchar, ctypes.stubs, ctypes.foreign, result
+  BuildDepends:  lief_bindings, ctypes, uchar, ctypes.stubs, ctypes.foreign, result
   CompiledObject: native
+
+Library lief_bindings
+  Install: true
+  Path: bindings
+  Modules: Ffi_bindings
+  BuildDepends: ctypes.stubs
+
 
 Document lief
   Type: ocamlbuild (0.4)
@@ -30,16 +37,16 @@ Document lief
 
 Executable ffi_types_stubgen
   Install: false
-  Path: .
+  Path: stubgen
   MainIs: ffi_types_stubgen.ml
-  BuildDepends: ctypes.stubs
+  BuildDepends: ctypes.stubs, lief_bindings
   CompiledObject: native
 
 Executable ffi_stubgen
   Install: false
-  Path: .
+  Path: stubgen
   MainIs: ffi_stubgen.ml
-  BuildDepends:    ctypes.stubs, ctypes.foreign
+  BuildDepends:    ctypes.stubs, ctypes.foreign, lief_bindings
   CompiledObject : native
 
 Executable test
