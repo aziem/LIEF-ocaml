@@ -537,6 +537,326 @@ type elf_symbol_bindings =
   | STB_HIPROC
 
 
+type machine_types = 
+  | MT_Invalid
+  | IMAGE_FILE_MACHINE_UNKNOWN
+  | IMAGE_FILE_MACHINE_AM33
+  | IMAGE_FILE_MACHINE_AMD64
+  | IMAGE_FILE_MACHINE_ARM
+  | IMAGE_FILE_MACHINE_ARMNT
+  | IMAGE_FILE_MACHINE_ARM64
+  | IMAGE_FILE_MACHINE_EBC
+  | IMAGE_FILE_MACHINE_I386
+  | IMAGE_FILE_MACHINE_IA64
+  | IMAGE_FILE_MACHINE_M32R
+  | IMAGE_FILE_MACHINE_MIPS16
+  | IMAGE_FILE_MACHINE_MIPSFPU
+  | IMAGE_FILE_MACHINE_MIPSFPU16
+  | IMAGE_FILE_MACHINE_POWERPC
+  | IMAGE_FILE_MACHINE_POWERPCFP
+  | IMAGE_FILE_MACHINE_R4000
+  | IMAGE_FILE_MACHINE_SH3
+  | IMAGE_FILE_MACHINE_SH3DSP
+  | IMAGE_FILE_MACHINE_SH4
+  | IMAGE_FILE_MACHINE_SH5
+  | IMAGE_FILE_MACHINE_THUMB
+  | IMAGE_FILE_MACHINE_WCEMIPSV2
+
+type symbol_section_number = 
+  | IMAGE_SYM_DEBUG
+  | IMAGE_SYM_ABSOLUTE
+  | IMAGE_SYM_UNDEFINED
+
+type header_characteristics = 
+  | IMAGE_FILE_INVALID
+  | IMAGE_FILE_RELOCS_STRIPPED
+  | IMAGE_FILE_EXECUTABLE_IMAGE
+  | IMAGE_FILE_LINE_NUMS_STRIPPED
+  | IMAGE_FILE_LOCAL_SYMS_STRIPPED
+  | IMAGE_FILE_AGGRESSIVE_WS_TRIM
+  | IMAGE_FILE_LARGE_ADDRESS_AWARE
+  | IMAGE_FILE_BYTES_REVERSED_LO
+  | IMAGE_FILE_32BIT_MACHINE
+  | IMAGE_FILE_DEBUG_STRIPPED
+  | IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP
+  | IMAGE_FILE_NET_RUN_FROM_SWAP
+  | IMAGE_FILE_SYSTEM
+  | IMAGE_FILE_DLL
+  | IMAGE_FILE_UP_SYSTEM_ONLY
+  | IMAGE_FILE_BYTES_REVERSED_HI
+
+type symbol_storage_class = 
+  | IMAGE_SYM_CLASS_INVALID
+  | IMAGE_SYM_CLASS_END_OF_FUNCTION
+  | IMAGE_SYM_CLASS_NULL
+  | IMAGE_SYM_CLASS_AUTOMATIC
+  | IMAGE_SYM_CLASS_EXTERNAL
+  | IMAGE_SYM_CLASS_STATIC
+  | IMAGE_SYM_CLASS_REGISTER
+  | IMAGE_SYM_CLASS_EXTERNAL_DEF
+  | IMAGE_SYM_CLASS_LABEL
+  | IMAGE_SYM_CLASS_UNDEFINED_LABEL
+  | IMAGE_SYM_CLASS_MEMBER_OF_STRUCT
+  | IMAGE_SYM_CLASS_ARGUMENT
+  | IMAGE_SYM_CLASS_STRUCT_TAG
+  | IMAGE_SYM_CLASS_MEMBER_OF_UNION
+  | IMAGE_SYM_CLASS_UNION_TAG
+  | IMAGE_SYM_CLASS_TYPE_DEFINITION
+  | IMAGE_SYM_CLASS_UNDEFINED_STATIC
+  | IMAGE_SYM_CLASS_ENUM_TAG
+  | IMAGE_SYM_CLASS_MEMBER_OF_ENUM
+  | IMAGE_SYM_CLASS_REGISTER_PARAM
+  | IMAGE_SYM_CLASS_BIT_FIELD
+  | IMAGE_SYM_CLASS_BLOCK
+  | IMAGE_SYM_CLASS_FUNCTION
+  | IMAGE_SYM_CLASS_END_OF_STRUCT
+  | IMAGE_SYM_CLASS_FILE
+  | IMAGE_SYM_CLASS_SECTION
+  | IMAGE_SYM_CLASS_WEAK_EXTERNAL
+  | IMAGE_SYM_CLASS_CLR_TOKEN
+
+type symbol_base_types = 
+  | IMAGE_SYM_TYPE_NULL
+  | IMAGE_SYM_TYPE_VOID
+  | IMAGE_SYM_TYPE_CHAR
+  | IMAGE_SYM_TYPE_SHORT
+  | IMAGE_SYM_TYPE_INT
+  | IMAGE_SYM_TYPE_LONG
+  | IMAGE_SYM_TYPE_FLOAT
+  | IMAGE_SYM_TYPE_DOUBLE
+  | IMAGE_SYM_TYPE_STRUCT
+  | IMAGE_SYM_TYPE_UNION
+  | IMAGE_SYM_TYPE_ENUM
+  | IMAGE_SYM_TYPE_MOE
+  | IMAGE_SYM_TYPE_BYTE
+  | IMAGE_SYM_TYPE_WORD
+  | IMAGE_SYM_TYPE_UINT
+  | IMAGE_SYM_TYPE_DWORD
+
+type symbol_complex_types = 
+  | IMAGE_SYM_DTYPE_NULL
+  | IMAGE_SYM_DTYPE_POINTER
+  | IMAGE_SYM_DTYPE_FUNCTION
+  | IMAGE_SYM_DTYPE_ARRAY
+  | SCT_COMPLEX_TYPE_SHIFT
+
+type auxsymboltype = 
+  | IMAGE_AUX_SYMBOL_TYPE_TOKEN_DEF
+
+type relocations_base_types = 
+  | IMAGE_REL_BASED_ABSOLUTE
+  | IMAGE_REL_BASED_HIGH
+  | IMAGE_REL_BASED_LOW
+  | IMAGE_REL_BASED_HIGHLOW
+  | IMAGE_REL_BASED_HIGHADJ
+  | IMAGE_REL_BASED_MIPS_JMPADDR
+  | IMAGE_REL_BASED_SECTION
+  | IMAGE_REL_BASED_REL
+  | IMAGE_REL_BASED_MIPS_JMPADDR16
+  | IMAGE_REL_BASED_IA64_IMM64
+  | IMAGE_REL_BASED_DIR64
+  | IMAGE_REL_BASED_HIGH3ADJ
+
+type relocations_i386 = 
+  | IMAGE_REL_I386_ABSOLUTE
+  | IMAGE_REL_I386_DIR16
+  | IMAGE_REL_I386_REL16
+  | IMAGE_REL_I386_DIR32
+  | IMAGE_REL_I386_DIR32NB
+  | IMAGE_REL_I386_SEG12
+  | IMAGE_REL_I386_SECTION
+  | IMAGE_REL_I386_SECREL
+  | IMAGE_REL_I386_TOKEN
+  | IMAGE_REL_I386_SECREL7
+  | IMAGE_REL_I386_REL32
+
+type relocations_amd64 = 
+  | IMAGE_REL_AMD64_ABSOLUTE
+  | IMAGE_REL_AMD64_ADDR64
+  | IMAGE_REL_AMD64_ADDR32
+  | IMAGE_REL_AMD64_ADDR32NB
+  | IMAGE_REL_AMD64_REL32
+  | IMAGE_REL_AMD64_REL32_1
+  | IMAGE_REL_AMD64_REL32_2
+  | IMAGE_REL_AMD64_REL32_3
+  | IMAGE_REL_AMD64_REL32_4
+  | IMAGE_REL_AMD64_REL32_5
+  | IMAGE_REL_AMD64_SECTION
+  | IMAGE_REL_AMD64_SECREL
+  | IMAGE_REL_AMD64_SECREL7
+  | IMAGE_REL_AMD64_TOKEN
+  | IMAGE_REL_AMD64_SREL32
+  | IMAGE_REL_AMD64_PAIR
+  | IMAGE_REL_AMD64_SSPAN32
+
+type relocations_arm = 
+  | IMAGE_REL_ARM_ABSOLUTE
+  | IMAGE_REL_ARM_ADDR32
+  | IMAGE_REL_ARM_ADDR32NB
+  | IMAGE_REL_ARM_BRANCH24
+  | IMAGE_REL_ARM_BRANCH11
+  | IMAGE_REL_ARM_TOKEN
+  | IMAGE_REL_ARM_BLX24
+  | IMAGE_REL_ARM_BLX11
+  | IMAGE_REL_ARM_SECTION
+  | IMAGE_REL_ARM_SECREL
+  | IMAGE_REL_ARM_MOV32A
+  | IMAGE_REL_ARM_MOV32T
+  | IMAGE_REL_ARM_BRANCH20T
+  | IMAGE_REL_ARM_BRANCH24T
+  | IMAGE_REL_ARM_BLX23T
+
+type weakexternalcharacteristics = 
+  | IMAGE_WEAK_EXTERN_SEARCH_NOLIBRARY
+  | IMAGE_WEAK_EXTERN_SEARCH_LIBRARY
+  | IMAGE_WEAK_EXTERN_SEARCH_ALIAS
+
+type data_directory = 
+  | EXPORT_TABLE
+  | IMPORT_TABLE
+  | RESOURCE_TABLE
+  | EXCEPTION_TABLE
+  | CERTIFICATE_TABLE
+  | BASE_RELOCATION_TABLE
+  | DEBUG
+  | ARCHITECTURE
+  | GLOBAL_PTR
+  | TLS_TABLE
+  | LOAD_CONFIG_TABLE
+  | BOUND_IMPORT
+  | IAT
+  | DELAY_IMPORT_DESCRIPTOR
+  | CLR_RUNTIME_HEADER
+  | NUM_DATA_DIRECTORIES
+
+type subsystem = 
+  | IMAGE_SUBSYSTEM_UNKNOWN
+  | IMAGE_SUBSYSTEM_NATIVE
+  | IMAGE_SUBSYSTEM_WINDOWS_GUI
+  | IMAGE_SUBSYSTEM_WINDOWS_CUI
+  | IMAGE_SUBSYSTEM_OS2_CUI
+  | IMAGE_SUBSYSTEM_POSIX_CUI
+  | IMAGE_SUBSYSTEM_NATIVE_WINDOWS
+  | IMAGE_SUBSYSTEM_WINDOWS_CE_GUI
+  | IMAGE_SUBSYSTEM_EFI_APPLICATION
+  | IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER
+  | IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER
+  | IMAGE_SUBSYSTEM_EFI_ROM
+  | IMAGE_SUBSYSTEM_XBOX
+  | IMAGE_SUBSYSTEM_WINDOWS_BOOT_APPLICATION
+
+type dll_characteristics = 
+  | IMAGE_DLL_CHARACTERISTICS_HIGH_ENTROPY_VA
+  | IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE
+  | IMAGE_DLL_CHARACTERISTICS_FORCE_INTEGRITY
+  | IMAGE_DLL_CHARACTERISTICS_NX_COMPAT
+  | IMAGE_DLL_CHARACTERISTICS_NO_ISOLATION
+  | IMAGE_DLL_CHARACTERISTICS_NO_SEH
+  | IMAGE_DLL_CHARACTERISTICS_NO_BIND
+  | IMAGE_DLL_CHARACTERISTICS_APPCONTAINER
+  | IMAGE_DLL_CHARACTERISTICS_WDM_DRIVER
+  | IMAGE_DLL_CHARACTERISTICS_GUARD_CF
+  | IMAGE_DLL_CHARACTERISTICS_TERMINAL_SERVER_AWARE
+
+type debug_types = 
+  | IMAGE_DEBUG_TYPE_UNKNOWN
+  | IMAGE_DEBUG_TYPE_COFF
+  | IMAGE_DEBUG_TYPE_CODEVIEW
+  | IMAGE_DEBUG_TYPE_FPO
+  | IMAGE_DEBUG_TYPE_MISC
+  | IMAGE_DEBUG_TYPE_EXCEPTION
+  | IMAGE_DEBUG_TYPE_FIXUP
+  | IMAGE_DEBUG_TYPE_OMAP_TO_SRC
+  | IMAGE_DEBUG_TYPE_OMAP_FROM_SRC
+  | IMAGE_DEBUG_TYPE_BORLAND
+  | IMAGE_DEBUG_TYPE_CLSID
+
+type importtype = 
+  | IMPORT_CODE
+  | IMPORT_DATA
+  | IMPORT_CONST
+
+type importnametype = 
+  | IMPORT_ORDINAL
+  | IMPORT_NAME
+  | IMPORT_NAME_NOPREFIX
+  | IMPORT_NAME_UNDECORATE
+
+type codeviewidentifiers = 
+  | DEBUG_LINE_TABLES_HAVE_COLUMN_RECORDS
+  | DEBUG_SECTION_MAGIC
+  | DEBUG_SYMBOL_SUBSECTION
+  | DEBUG_LINE_TABLE_SUBSECTION
+  | DEBUG_STRING_TABLE_SUBSECTION
+  | DEBUG_INDEX_SUBSECTION
+  | DEBUG_SYMBOL_TYPE_PROC_START
+  | DEBUG_SYMBOL_TYPE_PROC_END
+
+type resource_types = 
+  | CURSOR
+  | BITMAP
+  | ICON
+  | MENU
+  | DIALOG
+  | STRING
+  | FONTDIR
+  | FONT
+  | ACCELERATOR
+  | RCDATA
+  | MESSAGETABLE
+  | GROUP_CURSOR
+  | GROUP_ICON
+  | VERSION
+  | DLGINCLUDE
+  | PLUGPLAY
+  | VXD
+  | ANICURSOR
+  | ANIICON
+  | HTML
+  | MANIFEST
+type section_characteristics = 
+  | SC_Invalid
+  | IMAGE_SCN_TYPE_NO_PAD
+  | IMAGE_SCN_CNT_CODE
+  | IMAGE_SCN_CNT_INITIALIZED_DATA
+  | IMAGE_SCN_CNT_UNINITIALIZED_DATA
+  | IMAGE_SCN_LNK_OTHER
+  | IMAGE_SCN_LNK_INFO
+  | IMAGE_SCN_LNK_REMOVE
+  | IMAGE_SCN_LNK_COMDAT
+  | IMAGE_SCN_GPREL
+  | IMAGE_SCN_MEM_PURGEABLE
+  | IMAGE_SCN_MEM_16BIT
+  | IMAGE_SCN_MEM_LOCKED
+  | IMAGE_SCN_MEM_PRELOAD
+  | IMAGE_SCN_ALIGN_1BYTES
+  | IMAGE_SCN_ALIGN_2BYTES
+  | IMAGE_SCN_ALIGN_4BYTES
+  | IMAGE_SCN_ALIGN_8BYTES
+  | IMAGE_SCN_ALIGN_16BYTES
+  | IMAGE_SCN_ALIGN_32BYTES
+  | IMAGE_SCN_ALIGN_64BYTES
+  | IMAGE_SCN_ALIGN_128BYTES
+  | IMAGE_SCN_ALIGN_256BYTES
+  | IMAGE_SCN_ALIGN_512BYTES
+  | IMAGE_SCN_ALIGN_1024BYTES
+  | IMAGE_SCN_ALIGN_2048BYTES
+  | IMAGE_SCN_ALIGN_4096BYTES
+  | IMAGE_SCN_ALIGN_8192BYTES
+  | IMAGE_SCN_LNK_NRELOC_OVFL
+  | IMAGE_SCN_MEM_DISCARDABLE
+  | IMAGE_SCN_MEM_NOT_CACHED
+  | IMAGE_SCN_MEM_NOT_PAGED
+  | IMAGE_SCN_MEM_SHARED
+  | IMAGE_SCN_MEM_EXECUTE
+  | IMAGE_SCN_MEM_READ
+  | IMAGE_SCN_MEM_WRITE
+
+type pe_types = 
+  | PE32
+  | PE32_PLUS
+
+
 module Enums (T : Cstubs_structs.TYPE) =
 struct
 
@@ -1691,6 +2011,634 @@ struct
 
   end
 
+
+  (* PE *)
+  let mt_invalid = T.constant "MT_Invalid" T.int64_t
+  let image_file_machine_unknown = T.constant "IMAGE_FILE_MACHINE_UNKNOWN" T.int64_t
+  let image_file_machine_am33 = T.constant "IMAGE_FILE_MACHINE_AM33" T.int64_t
+  let image_file_machine_amd64 = T.constant "IMAGE_FILE_MACHINE_AMD64" T.int64_t
+  let image_file_machine_arm = T.constant "IMAGE_FILE_MACHINE_ARM" T.int64_t
+  let image_file_machine_armnt = T.constant "IMAGE_FILE_MACHINE_ARMNT" T.int64_t
+  let image_file_machine_arm64 = T.constant "IMAGE_FILE_MACHINE_ARM64" T.int64_t
+  let image_file_machine_ebc = T.constant "IMAGE_FILE_MACHINE_EBC" T.int64_t
+  let image_file_machine_i386 = T.constant "IMAGE_FILE_MACHINE_I386" T.int64_t
+  let image_file_machine_ia64 = T.constant "IMAGE_FILE_MACHINE_IA64" T.int64_t
+  let image_file_machine_m32r = T.constant "IMAGE_FILE_MACHINE_M32R" T.int64_t
+  let image_file_machine_mips16 = T.constant "IMAGE_FILE_MACHINE_MIPS16" T.int64_t
+  let image_file_machine_mipsfpu = T.constant "IMAGE_FILE_MACHINE_MIPSFPU" T.int64_t
+  let image_file_machine_mipsfpu16 = T.constant "IMAGE_FILE_MACHINE_MIPSFPU16" T.int64_t
+  let image_file_machine_powerpc = T.constant "IMAGE_FILE_MACHINE_POWERPC" T.int64_t
+  let image_file_machine_powerpcfp = T.constant "IMAGE_FILE_MACHINE_POWERPCFP" T.int64_t
+  let image_file_machine_r4000 = T.constant "IMAGE_FILE_MACHINE_R4000" T.int64_t
+  let image_file_machine_sh3 = T.constant "IMAGE_FILE_MACHINE_SH3" T.int64_t
+  let image_file_machine_sh3dsp = T.constant "IMAGE_FILE_MACHINE_SH3DSP" T.int64_t
+  let image_file_machine_sh4 = T.constant "IMAGE_FILE_MACHINE_SH4" T.int64_t
+  let image_file_machine_sh5 = T.constant "IMAGE_FILE_MACHINE_SH5" T.int64_t
+  let image_file_machine_thumb = T.constant "IMAGE_FILE_MACHINE_THUMB" T.int64_t
+  let image_file_machine_wcemipsv2 = T.constant "IMAGE_FILE_MACHINE_WCEMIPSV2" T.int64_t
+  let machine_types = T.enum "MACHINE_TYPES" [ 
+      MT_Invalid, mt_invalid;
+      IMAGE_FILE_MACHINE_UNKNOWN, image_file_machine_unknown;
+      IMAGE_FILE_MACHINE_AM33, image_file_machine_am33;
+      IMAGE_FILE_MACHINE_AMD64, image_file_machine_amd64;
+      IMAGE_FILE_MACHINE_ARM, image_file_machine_arm;
+      IMAGE_FILE_MACHINE_ARMNT, image_file_machine_armnt;
+      IMAGE_FILE_MACHINE_ARM64, image_file_machine_arm64;
+      IMAGE_FILE_MACHINE_EBC, image_file_machine_ebc;
+      IMAGE_FILE_MACHINE_I386, image_file_machine_i386;
+      IMAGE_FILE_MACHINE_IA64, image_file_machine_ia64;
+      IMAGE_FILE_MACHINE_M32R, image_file_machine_m32r;
+      IMAGE_FILE_MACHINE_MIPS16, image_file_machine_mips16;
+      IMAGE_FILE_MACHINE_MIPSFPU, image_file_machine_mipsfpu;
+      IMAGE_FILE_MACHINE_MIPSFPU16, image_file_machine_mipsfpu16;
+      IMAGE_FILE_MACHINE_POWERPC, image_file_machine_powerpc;
+      IMAGE_FILE_MACHINE_POWERPCFP, image_file_machine_powerpcfp;
+      IMAGE_FILE_MACHINE_R4000, image_file_machine_r4000;
+      IMAGE_FILE_MACHINE_SH3, image_file_machine_sh3;
+      IMAGE_FILE_MACHINE_SH3DSP, image_file_machine_sh3dsp;
+      IMAGE_FILE_MACHINE_SH4, image_file_machine_sh4;
+      IMAGE_FILE_MACHINE_SH5, image_file_machine_sh5;
+      IMAGE_FILE_MACHINE_THUMB, image_file_machine_thumb;
+      IMAGE_FILE_MACHINE_WCEMIPSV2, image_file_machine_wcemipsv2;
+    ] 
+
+  let image_sym_debug = T.constant "IMAGE_SYM_DEBUG" T.int64_t
+  let image_sym_absolute = T.constant "IMAGE_SYM_ABSOLUTE" T.int64_t
+  let image_sym_undefined = T.constant "IMAGE_SYM_UNDEFINED" T.int64_t
+  let symbol_section_number = T.enum "SYMBOL_SECTION_NUMBER" [ 
+      IMAGE_SYM_DEBUG, image_sym_debug;
+      IMAGE_SYM_ABSOLUTE, image_sym_absolute;
+      IMAGE_SYM_UNDEFINED, image_sym_undefined;
+    ]
+  let image_file_invalid = T.constant "IMAGE_FILE_INVALID" T.int64_t
+  let image_file_relocs_stripped = T.constant "IMAGE_FILE_RELOCS_STRIPPED" T.int64_t
+  let image_file_executable_image = T.constant "IMAGE_FILE_EXECUTABLE_IMAGE" T.int64_t
+  let image_file_line_nums_stripped = T.constant "IMAGE_FILE_LINE_NUMS_STRIPPED" T.int64_t
+  let image_file_local_syms_stripped = T.constant "IMAGE_FILE_LOCAL_SYMS_STRIPPED" T.int64_t
+  let image_file_aggressive_ws_trim = T.constant "IMAGE_FILE_AGGRESSIVE_WS_TRIM" T.int64_t
+  let image_file_large_address_aware = T.constant "IMAGE_FILE_LARGE_ADDRESS_AWARE" T.int64_t
+  let image_file_bytes_reversed_lo = T.constant "IMAGE_FILE_BYTES_REVERSED_LO" T.int64_t
+  let image_file_32bit_machine = T.constant "IMAGE_FILE_32BIT_MACHINE" T.int64_t
+  let image_file_debug_stripped = T.constant "IMAGE_FILE_DEBUG_STRIPPED" T.int64_t
+  let image_file_removable_run_from_swap = T.constant "IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP" T.int64_t
+  let image_file_net_run_from_swap = T.constant "IMAGE_FILE_NET_RUN_FROM_SWAP" T.int64_t
+  let image_file_system = T.constant "IMAGE_FILE_SYSTEM" T.int64_t
+  let image_file_dll = T.constant "IMAGE_FILE_DLL" T.int64_t
+  let image_file_up_system_only = T.constant "IMAGE_FILE_UP_SYSTEM_ONLY" T.int64_t
+  let image_file_bytes_reversed_hi = T.constant "IMAGE_FILE_BYTES_REVERSED_HI" T.int64_t
+  let header_characteristics = T.enum "HEADER_CHARACTERISTICS" [ 
+      IMAGE_FILE_INVALID, image_file_invalid;
+      IMAGE_FILE_RELOCS_STRIPPED, image_file_relocs_stripped;
+      IMAGE_FILE_EXECUTABLE_IMAGE, image_file_executable_image;
+      IMAGE_FILE_LINE_NUMS_STRIPPED, image_file_line_nums_stripped;
+      IMAGE_FILE_LOCAL_SYMS_STRIPPED, image_file_local_syms_stripped;
+      IMAGE_FILE_AGGRESSIVE_WS_TRIM, image_file_aggressive_ws_trim;
+      IMAGE_FILE_LARGE_ADDRESS_AWARE, image_file_large_address_aware;
+      IMAGE_FILE_BYTES_REVERSED_LO, image_file_bytes_reversed_lo;
+      IMAGE_FILE_32BIT_MACHINE, image_file_32bit_machine;
+      IMAGE_FILE_DEBUG_STRIPPED, image_file_debug_stripped;
+      IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP, image_file_removable_run_from_swap;
+      IMAGE_FILE_NET_RUN_FROM_SWAP, image_file_net_run_from_swap;
+      IMAGE_FILE_SYSTEM, image_file_system;
+      IMAGE_FILE_DLL, image_file_dll;
+      IMAGE_FILE_UP_SYSTEM_ONLY, image_file_up_system_only;
+      IMAGE_FILE_BYTES_REVERSED_HI, image_file_bytes_reversed_hi;
+    ]
+
+  let image_sym_class_invalid = T.constant "IMAGE_SYM_CLASS_INVALID" T.int64_t
+  let image_sym_class_end_of_function = T.constant "IMAGE_SYM_CLASS_END_OF_FUNCTION" T.int64_t
+  let image_sym_class_null = T.constant "IMAGE_SYM_CLASS_NULL" T.int64_t
+  let image_sym_class_automatic = T.constant "IMAGE_SYM_CLASS_AUTOMATIC" T.int64_t
+  let image_sym_class_external = T.constant "IMAGE_SYM_CLASS_EXTERNAL" T.int64_t
+  let image_sym_class_static = T.constant "IMAGE_SYM_CLASS_STATIC" T.int64_t
+  let image_sym_class_register = T.constant "IMAGE_SYM_CLASS_REGISTER" T.int64_t
+  let image_sym_class_external_def = T.constant "IMAGE_SYM_CLASS_EXTERNAL_DEF" T.int64_t
+  let image_sym_class_label = T.constant "IMAGE_SYM_CLASS_LABEL" T.int64_t
+  let image_sym_class_undefined_label = T.constant "IMAGE_SYM_CLASS_UNDEFINED_LABEL" T.int64_t
+  let image_sym_class_member_of_struct = T.constant "IMAGE_SYM_CLASS_MEMBER_OF_STRUCT" T.int64_t
+  let image_sym_class_argument = T.constant "IMAGE_SYM_CLASS_ARGUMENT" T.int64_t
+  let image_sym_class_struct_tag = T.constant "IMAGE_SYM_CLASS_STRUCT_TAG" T.int64_t
+  let image_sym_class_member_of_union = T.constant "IMAGE_SYM_CLASS_MEMBER_OF_UNION" T.int64_t
+  let image_sym_class_union_tag = T.constant "IMAGE_SYM_CLASS_UNION_TAG" T.int64_t
+  let image_sym_class_type_definition = T.constant "IMAGE_SYM_CLASS_TYPE_DEFINITION" T.int64_t
+  let image_sym_class_undefined_static = T.constant "IMAGE_SYM_CLASS_UNDEFINED_STATIC" T.int64_t
+  let image_sym_class_enum_tag = T.constant "IMAGE_SYM_CLASS_ENUM_TAG" T.int64_t
+  let image_sym_class_member_of_enum = T.constant "IMAGE_SYM_CLASS_MEMBER_OF_ENUM" T.int64_t
+  let image_sym_class_register_param = T.constant "IMAGE_SYM_CLASS_REGISTER_PARAM" T.int64_t
+  let image_sym_class_bit_field = T.constant "IMAGE_SYM_CLASS_BIT_FIELD" T.int64_t
+  let image_sym_class_block = T.constant "IMAGE_SYM_CLASS_BLOCK" T.int64_t
+  let image_sym_class_function = T.constant "IMAGE_SYM_CLASS_FUNCTION" T.int64_t
+  let image_sym_class_end_of_struct = T.constant "IMAGE_SYM_CLASS_END_OF_STRUCT" T.int64_t
+  let image_sym_class_file = T.constant "IMAGE_SYM_CLASS_FILE" T.int64_t
+  let image_sym_class_section = T.constant "IMAGE_SYM_CLASS_SECTION" T.int64_t
+  let image_sym_class_weak_external = T.constant "IMAGE_SYM_CLASS_WEAK_EXTERNAL" T.int64_t
+  let image_sym_class_clr_token = T.constant "IMAGE_SYM_CLASS_CLR_TOKEN" T.int64_t
+  let symbol_storage_class = T.enum "SYMBOL_STORAGE_CLASS" [ 
+      IMAGE_SYM_CLASS_INVALID, image_sym_class_invalid;
+      IMAGE_SYM_CLASS_END_OF_FUNCTION, image_sym_class_end_of_function;
+      IMAGE_SYM_CLASS_NULL, image_sym_class_null;
+      IMAGE_SYM_CLASS_AUTOMATIC, image_sym_class_automatic;
+      IMAGE_SYM_CLASS_EXTERNAL, image_sym_class_external;
+      IMAGE_SYM_CLASS_STATIC, image_sym_class_static;
+      IMAGE_SYM_CLASS_REGISTER, image_sym_class_register;
+      IMAGE_SYM_CLASS_EXTERNAL_DEF, image_sym_class_external_def;
+      IMAGE_SYM_CLASS_LABEL, image_sym_class_label;
+      IMAGE_SYM_CLASS_UNDEFINED_LABEL, image_sym_class_undefined_label;
+      IMAGE_SYM_CLASS_MEMBER_OF_STRUCT, image_sym_class_member_of_struct;
+      IMAGE_SYM_CLASS_ARGUMENT, image_sym_class_argument;
+      IMAGE_SYM_CLASS_STRUCT_TAG, image_sym_class_struct_tag;
+      IMAGE_SYM_CLASS_MEMBER_OF_UNION, image_sym_class_member_of_union;
+      IMAGE_SYM_CLASS_UNION_TAG, image_sym_class_union_tag;
+      IMAGE_SYM_CLASS_TYPE_DEFINITION, image_sym_class_type_definition;
+      IMAGE_SYM_CLASS_UNDEFINED_STATIC, image_sym_class_undefined_static;
+      IMAGE_SYM_CLASS_ENUM_TAG, image_sym_class_enum_tag;
+      IMAGE_SYM_CLASS_MEMBER_OF_ENUM, image_sym_class_member_of_enum;
+      IMAGE_SYM_CLASS_REGISTER_PARAM, image_sym_class_register_param;
+      IMAGE_SYM_CLASS_BIT_FIELD, image_sym_class_bit_field;
+      IMAGE_SYM_CLASS_BLOCK, image_sym_class_block;
+      IMAGE_SYM_CLASS_FUNCTION, image_sym_class_function;
+      IMAGE_SYM_CLASS_END_OF_STRUCT, image_sym_class_end_of_struct;
+      IMAGE_SYM_CLASS_FILE, image_sym_class_file;
+      IMAGE_SYM_CLASS_SECTION, image_sym_class_section;
+      IMAGE_SYM_CLASS_WEAK_EXTERNAL, image_sym_class_weak_external;
+      IMAGE_SYM_CLASS_CLR_TOKEN, image_sym_class_clr_token;
+    ]
+
+  let image_sym_type_null = T.constant "IMAGE_SYM_TYPE_NULL" T.int64_t
+  let image_sym_type_void = T.constant "IMAGE_SYM_TYPE_VOID" T.int64_t
+  let image_sym_type_char = T.constant "IMAGE_SYM_TYPE_CHAR" T.int64_t
+  let image_sym_type_short = T.constant "IMAGE_SYM_TYPE_SHORT" T.int64_t
+  let image_sym_type_int = T.constant "IMAGE_SYM_TYPE_INT" T.int64_t
+  let image_sym_type_long = T.constant "IMAGE_SYM_TYPE_LONG" T.int64_t
+  let image_sym_type_float = T.constant "IMAGE_SYM_TYPE_FLOAT" T.int64_t
+  let image_sym_type_double = T.constant "IMAGE_SYM_TYPE_DOUBLE" T.int64_t
+  let image_sym_type_struct = T.constant "IMAGE_SYM_TYPE_STRUCT" T.int64_t
+  let image_sym_type_union = T.constant "IMAGE_SYM_TYPE_UNION" T.int64_t
+  let image_sym_type_enum = T.constant "IMAGE_SYM_TYPE_ENUM" T.int64_t
+  let image_sym_type_moe = T.constant "IMAGE_SYM_TYPE_MOE" T.int64_t
+  let image_sym_type_byte = T.constant "IMAGE_SYM_TYPE_BYTE" T.int64_t
+  let image_sym_type_word = T.constant "IMAGE_SYM_TYPE_WORD" T.int64_t
+  let image_sym_type_uint = T.constant "IMAGE_SYM_TYPE_UINT" T.int64_t
+  let image_sym_type_dword = T.constant "IMAGE_SYM_TYPE_DWORD" T.int64_t
+  let symbol_base_types = T.enum "SYMBOL_BASE_TYPES" [ 
+      IMAGE_SYM_TYPE_NULL, image_sym_type_null;
+      IMAGE_SYM_TYPE_VOID, image_sym_type_void;
+      IMAGE_SYM_TYPE_CHAR, image_sym_type_char;
+      IMAGE_SYM_TYPE_SHORT, image_sym_type_short;
+      IMAGE_SYM_TYPE_INT, image_sym_type_int;
+      IMAGE_SYM_TYPE_LONG, image_sym_type_long;
+      IMAGE_SYM_TYPE_FLOAT, image_sym_type_float;
+      IMAGE_SYM_TYPE_DOUBLE, image_sym_type_double;
+      IMAGE_SYM_TYPE_STRUCT, image_sym_type_struct;
+      IMAGE_SYM_TYPE_UNION, image_sym_type_union;
+      IMAGE_SYM_TYPE_ENUM, image_sym_type_enum;
+      IMAGE_SYM_TYPE_MOE, image_sym_type_moe;
+      IMAGE_SYM_TYPE_BYTE, image_sym_type_byte;
+      IMAGE_SYM_TYPE_WORD, image_sym_type_word;
+      IMAGE_SYM_TYPE_UINT, image_sym_type_uint;
+      IMAGE_SYM_TYPE_DWORD, image_sym_type_dword;
+    ]
+
+  let image_sym_dtype_null = T.constant "IMAGE_SYM_DTYPE_NULL" T.int64_t
+  let image_sym_dtype_pointer = T.constant "IMAGE_SYM_DTYPE_POINTER" T.int64_t
+  let image_sym_dtype_function = T.constant "IMAGE_SYM_DTYPE_FUNCTION" T.int64_t
+  let image_sym_dtype_array = T.constant "IMAGE_SYM_DTYPE_ARRAY" T.int64_t
+  let sct_complex_type_shift = T.constant "SCT_COMPLEX_TYPE_SHIFT" T.int64_t
+  let symbol_complex_types = T.enum "SYMBOL_COMPLEX_TYPES" [ 
+      IMAGE_SYM_DTYPE_NULL, image_sym_dtype_null;
+      IMAGE_SYM_DTYPE_POINTER, image_sym_dtype_pointer;
+      IMAGE_SYM_DTYPE_FUNCTION, image_sym_dtype_function;
+      IMAGE_SYM_DTYPE_ARRAY, image_sym_dtype_array;
+      SCT_COMPLEX_TYPE_SHIFT, sct_complex_type_shift;
+    ]
+
+  let image_aux_symbol_type_token_def = T.constant "IMAGE_AUX_SYMBOL_TYPE_TOKEN_DEF" T.int64_t
+  let auxsymboltype = T.enum "AuxSymbolType" [ 
+      IMAGE_AUX_SYMBOL_TYPE_TOKEN_DEF, image_aux_symbol_type_token_def;
+    ]
+
+  let image_rel_based_absolute = T.constant "IMAGE_REL_BASED_ABSOLUTE" T.int64_t
+  let image_rel_based_high = T.constant "IMAGE_REL_BASED_HIGH" T.int64_t
+  let image_rel_based_low = T.constant "IMAGE_REL_BASED_LOW" T.int64_t
+  let image_rel_based_highlow = T.constant "IMAGE_REL_BASED_HIGHLOW" T.int64_t
+  let image_rel_based_highadj = T.constant "IMAGE_REL_BASED_HIGHADJ" T.int64_t
+  let image_rel_based_mips_jmpaddr = T.constant "IMAGE_REL_BASED_MIPS_JMPADDR" T.int64_t
+  let image_rel_based_section = T.constant "IMAGE_REL_BASED_SECTION" T.int64_t
+  let image_rel_based_rel = T.constant "IMAGE_REL_BASED_REL" T.int64_t
+  let image_rel_based_mips_jmpaddr16 = T.constant "IMAGE_REL_BASED_MIPS_JMPADDR16" T.int64_t
+  let image_rel_based_ia64_imm64 = T.constant "IMAGE_REL_BASED_IA64_IMM64" T.int64_t
+  let image_rel_based_dir64 = T.constant "IMAGE_REL_BASED_DIR64" T.int64_t
+  let image_rel_based_high3adj = T.constant "IMAGE_REL_BASED_HIGH3ADJ" T.int64_t
+  let relocations_base_types = T.enum "RELOCATIONS_BASE_TYPES" [ 
+      IMAGE_REL_BASED_ABSOLUTE, image_rel_based_absolute;
+      IMAGE_REL_BASED_HIGH, image_rel_based_high;
+      IMAGE_REL_BASED_LOW, image_rel_based_low;
+      IMAGE_REL_BASED_HIGHLOW, image_rel_based_highlow;
+      IMAGE_REL_BASED_HIGHADJ, image_rel_based_highadj;
+      IMAGE_REL_BASED_MIPS_JMPADDR, image_rel_based_mips_jmpaddr;
+      IMAGE_REL_BASED_SECTION, image_rel_based_section;
+      IMAGE_REL_BASED_REL, image_rel_based_rel;
+      IMAGE_REL_BASED_MIPS_JMPADDR16, image_rel_based_mips_jmpaddr16;
+      IMAGE_REL_BASED_IA64_IMM64, image_rel_based_ia64_imm64;
+      IMAGE_REL_BASED_DIR64, image_rel_based_dir64;
+      IMAGE_REL_BASED_HIGH3ADJ, image_rel_based_high3adj;
+    ]
+
+  let image_rel_i386_absolute = T.constant "IMAGE_REL_I386_ABSOLUTE" T.int64_t
+  let image_rel_i386_dir16 = T.constant "IMAGE_REL_I386_DIR16" T.int64_t
+  let image_rel_i386_rel16 = T.constant "IMAGE_REL_I386_REL16" T.int64_t
+  let image_rel_i386_dir32 = T.constant "IMAGE_REL_I386_DIR32" T.int64_t
+  let image_rel_i386_dir32nb = T.constant "IMAGE_REL_I386_DIR32NB" T.int64_t
+  let image_rel_i386_seg12 = T.constant "IMAGE_REL_I386_SEG12" T.int64_t
+  let image_rel_i386_section = T.constant "IMAGE_REL_I386_SECTION" T.int64_t
+  let image_rel_i386_secrel = T.constant "IMAGE_REL_I386_SECREL" T.int64_t
+  let image_rel_i386_token = T.constant "IMAGE_REL_I386_TOKEN" T.int64_t
+  let image_rel_i386_secrel7 = T.constant "IMAGE_REL_I386_SECREL7" T.int64_t
+  let image_rel_i386_rel32 = T.constant "IMAGE_REL_I386_REL32" T.int64_t
+  let relocations_i386 = T.enum "RELOCATIONS_I386" [ 
+      IMAGE_REL_I386_ABSOLUTE, image_rel_i386_absolute;
+      IMAGE_REL_I386_DIR16, image_rel_i386_dir16;
+      IMAGE_REL_I386_REL16, image_rel_i386_rel16;
+      IMAGE_REL_I386_DIR32, image_rel_i386_dir32;
+      IMAGE_REL_I386_DIR32NB, image_rel_i386_dir32nb;
+      IMAGE_REL_I386_SEG12, image_rel_i386_seg12;
+      IMAGE_REL_I386_SECTION, image_rel_i386_section;
+      IMAGE_REL_I386_SECREL, image_rel_i386_secrel;
+      IMAGE_REL_I386_TOKEN, image_rel_i386_token;
+      IMAGE_REL_I386_SECREL7, image_rel_i386_secrel7;
+      IMAGE_REL_I386_REL32, image_rel_i386_rel32;
+    ]
+
+
+
+  let image_rel_amd64_absolute = T.constant "IMAGE_REL_AMD64_ABSOLUTE" T.int64_t
+  let image_rel_amd64_addr64 = T.constant "IMAGE_REL_AMD64_ADDR64" T.int64_t
+  let image_rel_amd64_addr32 = T.constant "IMAGE_REL_AMD64_ADDR32" T.int64_t
+  let image_rel_amd64_addr32nb = T.constant "IMAGE_REL_AMD64_ADDR32NB" T.int64_t
+  let image_rel_amd64_rel32 = T.constant "IMAGE_REL_AMD64_REL32" T.int64_t
+  let image_rel_amd64_rel32_1 = T.constant "IMAGE_REL_AMD64_REL32_1" T.int64_t
+  let image_rel_amd64_rel32_2 = T.constant "IMAGE_REL_AMD64_REL32_2" T.int64_t
+  let image_rel_amd64_rel32_3 = T.constant "IMAGE_REL_AMD64_REL32_3" T.int64_t
+  let image_rel_amd64_rel32_4 = T.constant "IMAGE_REL_AMD64_REL32_4" T.int64_t
+  let image_rel_amd64_rel32_5 = T.constant "IMAGE_REL_AMD64_REL32_5" T.int64_t
+  let image_rel_amd64_section = T.constant "IMAGE_REL_AMD64_SECTION" T.int64_t
+  let image_rel_amd64_secrel = T.constant "IMAGE_REL_AMD64_SECREL" T.int64_t
+  let image_rel_amd64_secrel7 = T.constant "IMAGE_REL_AMD64_SECREL7" T.int64_t
+  let image_rel_amd64_token = T.constant "IMAGE_REL_AMD64_TOKEN" T.int64_t
+  let image_rel_amd64_srel32 = T.constant "IMAGE_REL_AMD64_SREL32" T.int64_t
+  let image_rel_amd64_pair = T.constant "IMAGE_REL_AMD64_PAIR" T.int64_t
+  let image_rel_amd64_sspan32 = T.constant "IMAGE_REL_AMD64_SSPAN32" T.int64_t
+  let relocations_amd64 = T.enum "RELOCATIONS_AMD64" [ 
+      IMAGE_REL_AMD64_ABSOLUTE, image_rel_amd64_absolute;
+      IMAGE_REL_AMD64_ADDR64, image_rel_amd64_addr64;
+      IMAGE_REL_AMD64_ADDR32, image_rel_amd64_addr32;
+      IMAGE_REL_AMD64_ADDR32NB, image_rel_amd64_addr32nb;
+      IMAGE_REL_AMD64_REL32, image_rel_amd64_rel32;
+      IMAGE_REL_AMD64_REL32_1, image_rel_amd64_rel32_1;
+      IMAGE_REL_AMD64_REL32_2, image_rel_amd64_rel32_2;
+      IMAGE_REL_AMD64_REL32_3, image_rel_amd64_rel32_3;
+      IMAGE_REL_AMD64_REL32_4, image_rel_amd64_rel32_4;
+      IMAGE_REL_AMD64_REL32_5, image_rel_amd64_rel32_5;
+      IMAGE_REL_AMD64_SECTION, image_rel_amd64_section;
+      IMAGE_REL_AMD64_SECREL, image_rel_amd64_secrel;
+      IMAGE_REL_AMD64_SECREL7, image_rel_amd64_secrel7;
+      IMAGE_REL_AMD64_TOKEN, image_rel_amd64_token;
+      IMAGE_REL_AMD64_SREL32, image_rel_amd64_srel32;
+      IMAGE_REL_AMD64_PAIR, image_rel_amd64_pair;
+      IMAGE_REL_AMD64_SSPAN32, image_rel_amd64_sspan32;
+    ]
+
+  let image_rel_arm_absolute = T.constant "IMAGE_REL_ARM_ABSOLUTE" T.int64_t
+  let image_rel_arm_addr32 = T.constant "IMAGE_REL_ARM_ADDR32" T.int64_t
+  let image_rel_arm_addr32nb = T.constant "IMAGE_REL_ARM_ADDR32NB" T.int64_t
+  let image_rel_arm_branch24 = T.constant "IMAGE_REL_ARM_BRANCH24" T.int64_t
+  let image_rel_arm_branch11 = T.constant "IMAGE_REL_ARM_BRANCH11" T.int64_t
+  let image_rel_arm_token = T.constant "IMAGE_REL_ARM_TOKEN" T.int64_t
+  let image_rel_arm_blx24 = T.constant "IMAGE_REL_ARM_BLX24" T.int64_t
+  let image_rel_arm_blx11 = T.constant "IMAGE_REL_ARM_BLX11" T.int64_t
+  let image_rel_arm_section = T.constant "IMAGE_REL_ARM_SECTION" T.int64_t
+  let image_rel_arm_secrel = T.constant "IMAGE_REL_ARM_SECREL" T.int64_t
+  let image_rel_arm_mov32a = T.constant "IMAGE_REL_ARM_MOV32A" T.int64_t
+  let image_rel_arm_mov32t = T.constant "IMAGE_REL_ARM_MOV32T" T.int64_t
+  let image_rel_arm_branch20t = T.constant "IMAGE_REL_ARM_BRANCH20T" T.int64_t
+  let image_rel_arm_branch24t = T.constant "IMAGE_REL_ARM_BRANCH24T" T.int64_t
+  let image_rel_arm_blx23t = T.constant "IMAGE_REL_ARM_BLX23T" T.int64_t
+  let relocations_arm = T.enum "RELOCATIONS_ARM" [ 
+      IMAGE_REL_ARM_ABSOLUTE, image_rel_arm_absolute;
+      IMAGE_REL_ARM_ADDR32, image_rel_arm_addr32;
+      IMAGE_REL_ARM_ADDR32NB, image_rel_arm_addr32nb;
+      IMAGE_REL_ARM_BRANCH24, image_rel_arm_branch24;
+      IMAGE_REL_ARM_BRANCH11, image_rel_arm_branch11;
+      IMAGE_REL_ARM_TOKEN, image_rel_arm_token;
+      IMAGE_REL_ARM_BLX24, image_rel_arm_blx24;
+      IMAGE_REL_ARM_BLX11, image_rel_arm_blx11;
+      IMAGE_REL_ARM_SECTION, image_rel_arm_section;
+      IMAGE_REL_ARM_SECREL, image_rel_arm_secrel;
+      IMAGE_REL_ARM_MOV32A, image_rel_arm_mov32a;
+      IMAGE_REL_ARM_MOV32T, image_rel_arm_mov32t;
+      IMAGE_REL_ARM_BRANCH20T, image_rel_arm_branch20t;
+      IMAGE_REL_ARM_BRANCH24T, image_rel_arm_branch24t;
+      IMAGE_REL_ARM_BLX23T, image_rel_arm_blx23t;
+    ]
+
+  let image_weak_extern_search_nolibrary = T.constant "IMAGE_WEAK_EXTERN_SEARCH_NOLIBRARY" T.int64_t
+  let image_weak_extern_search_library = T.constant "IMAGE_WEAK_EXTERN_SEARCH_LIBRARY" T.int64_t
+  let image_weak_extern_search_alias = T.constant "IMAGE_WEAK_EXTERN_SEARCH_ALIAS" T.int64_t
+  let weakexternalcharacteristics = T.enum "WeakExternalCharacteristics" [ 
+      IMAGE_WEAK_EXTERN_SEARCH_NOLIBRARY, image_weak_extern_search_nolibrary;
+      IMAGE_WEAK_EXTERN_SEARCH_LIBRARY, image_weak_extern_search_library;
+      IMAGE_WEAK_EXTERN_SEARCH_ALIAS, image_weak_extern_search_alias;
+    ]
+
+  let export_table = T.constant "EXPORT_TABLE" T.int64_t
+  let import_table = T.constant "IMPORT_TABLE" T.int64_t
+  let resource_table = T.constant "RESOURCE_TABLE" T.int64_t
+  let exception_table = T.constant "EXCEPTION_TABLE" T.int64_t
+  let certificate_table = T.constant "CERTIFICATE_TABLE" T.int64_t
+  let base_relocation_table = T.constant "BASE_RELOCATION_TABLE" T.int64_t
+  let debug = T.constant "DEBUG" T.int64_t
+  let architecture = T.constant "ARCHITECTURE" T.int64_t
+  let global_ptr = T.constant "GLOBAL_PTR" T.int64_t
+  let tls_table = T.constant "TLS_TABLE" T.int64_t
+  let load_config_table = T.constant "LOAD_CONFIG_TABLE" T.int64_t
+  let bound_import = T.constant "BOUND_IMPORT" T.int64_t
+  let iat = T.constant "IAT" T.int64_t
+  let delay_import_descriptor = T.constant "DELAY_IMPORT_DESCRIPTOR" T.int64_t
+  let clr_runtime_header = T.constant "CLR_RUNTIME_HEADER" T.int64_t
+  let num_data_directories = T.constant "NUM_DATA_DIRECTORIES" T.int64_t
+  let data_directory = T.enum "DATA_DIRECTORY" [ 
+      EXPORT_TABLE, export_table;
+      IMPORT_TABLE, import_table;
+      RESOURCE_TABLE, resource_table;
+      EXCEPTION_TABLE, exception_table;
+      CERTIFICATE_TABLE, certificate_table;
+      BASE_RELOCATION_TABLE, base_relocation_table;
+      DEBUG, debug;
+      ARCHITECTURE, architecture;
+      GLOBAL_PTR, global_ptr;
+      TLS_TABLE, tls_table;
+      LOAD_CONFIG_TABLE, load_config_table;
+      BOUND_IMPORT, bound_import;
+      IAT, iat;
+      DELAY_IMPORT_DESCRIPTOR, delay_import_descriptor;
+      CLR_RUNTIME_HEADER, clr_runtime_header;
+      NUM_DATA_DIRECTORIES, num_data_directories;
+    ]
+
+
+  let image_subsystem_unknown = T.constant "IMAGE_SUBSYSTEM_UNKNOWN" T.int64_t
+  let image_subsystem_native = T.constant "IMAGE_SUBSYSTEM_NATIVE" T.int64_t
+  let image_subsystem_windows_gui = T.constant "IMAGE_SUBSYSTEM_WINDOWS_GUI" T.int64_t
+  let image_subsystem_windows_cui = T.constant "IMAGE_SUBSYSTEM_WINDOWS_CUI" T.int64_t
+  let image_subsystem_os2_cui = T.constant "IMAGE_SUBSYSTEM_OS2_CUI" T.int64_t
+  let image_subsystem_posix_cui = T.constant "IMAGE_SUBSYSTEM_POSIX_CUI" T.int64_t
+  let image_subsystem_native_windows = T.constant "IMAGE_SUBSYSTEM_NATIVE_WINDOWS" T.int64_t
+  let image_subsystem_windows_ce_gui = T.constant "IMAGE_SUBSYSTEM_WINDOWS_CE_GUI" T.int64_t
+  let image_subsystem_efi_application = T.constant "IMAGE_SUBSYSTEM_EFI_APPLICATION" T.int64_t
+  let image_subsystem_efi_boot_service_driver = T.constant "IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER" T.int64_t
+  let image_subsystem_efi_runtime_driver = T.constant "IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER" T.int64_t
+  let image_subsystem_efi_rom = T.constant "IMAGE_SUBSYSTEM_EFI_ROM" T.int64_t
+  let image_subsystem_xbox = T.constant "IMAGE_SUBSYSTEM_XBOX" T.int64_t
+  let image_subsystem_windows_boot_application = T.constant "IMAGE_SUBSYSTEM_WINDOWS_BOOT_APPLICATION" T.int64_t
+  let subsystem = T.enum "SUBSYSTEM" [ 
+      IMAGE_SUBSYSTEM_UNKNOWN, image_subsystem_unknown;
+      IMAGE_SUBSYSTEM_NATIVE, image_subsystem_native;
+      IMAGE_SUBSYSTEM_WINDOWS_GUI, image_subsystem_windows_gui;
+      IMAGE_SUBSYSTEM_WINDOWS_CUI, image_subsystem_windows_cui;
+      IMAGE_SUBSYSTEM_OS2_CUI, image_subsystem_os2_cui;
+      IMAGE_SUBSYSTEM_POSIX_CUI, image_subsystem_posix_cui;
+      IMAGE_SUBSYSTEM_NATIVE_WINDOWS, image_subsystem_native_windows;
+      IMAGE_SUBSYSTEM_WINDOWS_CE_GUI, image_subsystem_windows_ce_gui;
+      IMAGE_SUBSYSTEM_EFI_APPLICATION, image_subsystem_efi_application;
+      IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER, image_subsystem_efi_boot_service_driver;
+      IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER, image_subsystem_efi_runtime_driver;
+      IMAGE_SUBSYSTEM_EFI_ROM, image_subsystem_efi_rom;
+      IMAGE_SUBSYSTEM_XBOX, image_subsystem_xbox;
+      IMAGE_SUBSYSTEM_WINDOWS_BOOT_APPLICATION, image_subsystem_windows_boot_application;
+    ]
+
+  let image_dll_characteristics_high_entropy_va = T.constant "IMAGE_DLL_CHARACTERISTICS_HIGH_ENTROPY_VA" T.int64_t
+  let image_dll_characteristics_dynamic_base = T.constant "IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE" T.int64_t
+  let image_dll_characteristics_force_integrity = T.constant "IMAGE_DLL_CHARACTERISTICS_FORCE_INTEGRITY" T.int64_t
+  let image_dll_characteristics_nx_compat = T.constant "IMAGE_DLL_CHARACTERISTICS_NX_COMPAT" T.int64_t
+  let image_dll_characteristics_no_isolation = T.constant "IMAGE_DLL_CHARACTERISTICS_NO_ISOLATION" T.int64_t
+  let image_dll_characteristics_no_seh = T.constant "IMAGE_DLL_CHARACTERISTICS_NO_SEH" T.int64_t
+  let image_dll_characteristics_no_bind = T.constant "IMAGE_DLL_CHARACTERISTICS_NO_BIND" T.int64_t
+  let image_dll_characteristics_appcontainer = T.constant "IMAGE_DLL_CHARACTERISTICS_APPCONTAINER" T.int64_t
+  let image_dll_characteristics_wdm_driver = T.constant "IMAGE_DLL_CHARACTERISTICS_WDM_DRIVER" T.int64_t
+  let image_dll_characteristics_guard_cf = T.constant "IMAGE_DLL_CHARACTERISTICS_GUARD_CF" T.int64_t
+  let image_dll_characteristics_terminal_server_aware = T.constant "IMAGE_DLL_CHARACTERISTICS_TERMINAL_SERVER_AWARE" T.int64_t
+  let dll_characteristics = T.enum "DLL_CHARACTERISTICS" [ 
+      IMAGE_DLL_CHARACTERISTICS_HIGH_ENTROPY_VA, image_dll_characteristics_high_entropy_va;
+      IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE, image_dll_characteristics_dynamic_base;
+      IMAGE_DLL_CHARACTERISTICS_FORCE_INTEGRITY, image_dll_characteristics_force_integrity;
+      IMAGE_DLL_CHARACTERISTICS_NX_COMPAT, image_dll_characteristics_nx_compat;
+      IMAGE_DLL_CHARACTERISTICS_NO_ISOLATION, image_dll_characteristics_no_isolation;
+      IMAGE_DLL_CHARACTERISTICS_NO_SEH, image_dll_characteristics_no_seh;
+      IMAGE_DLL_CHARACTERISTICS_NO_BIND, image_dll_characteristics_no_bind;
+      IMAGE_DLL_CHARACTERISTICS_APPCONTAINER, image_dll_characteristics_appcontainer;
+      IMAGE_DLL_CHARACTERISTICS_WDM_DRIVER, image_dll_characteristics_wdm_driver;
+      IMAGE_DLL_CHARACTERISTICS_GUARD_CF, image_dll_characteristics_guard_cf;
+      IMAGE_DLL_CHARACTERISTICS_TERMINAL_SERVER_AWARE, image_dll_characteristics_terminal_server_aware;
+    ]
+
+  let image_debug_type_unknown = T.constant "IMAGE_DEBUG_TYPE_UNKNOWN" T.int64_t
+  let image_debug_type_coff = T.constant "IMAGE_DEBUG_TYPE_COFF" T.int64_t
+  let image_debug_type_codeview = T.constant "IMAGE_DEBUG_TYPE_CODEVIEW" T.int64_t
+  let image_debug_type_fpo = T.constant "IMAGE_DEBUG_TYPE_FPO" T.int64_t
+  let image_debug_type_misc = T.constant "IMAGE_DEBUG_TYPE_MISC" T.int64_t
+  let image_debug_type_exception = T.constant "IMAGE_DEBUG_TYPE_EXCEPTION" T.int64_t
+  let image_debug_type_fixup = T.constant "IMAGE_DEBUG_TYPE_FIXUP" T.int64_t
+  let image_debug_type_omap_to_src = T.constant "IMAGE_DEBUG_TYPE_OMAP_TO_SRC" T.int64_t
+  let image_debug_type_omap_from_src = T.constant "IMAGE_DEBUG_TYPE_OMAP_FROM_SRC" T.int64_t
+  let image_debug_type_borland = T.constant "IMAGE_DEBUG_TYPE_BORLAND" T.int64_t
+  let image_debug_type_clsid = T.constant "IMAGE_DEBUG_TYPE_CLSID" T.int64_t
+  let debug_types = T.enum "DEBUG_TYPES" [ 
+      IMAGE_DEBUG_TYPE_UNKNOWN, image_debug_type_unknown;
+      IMAGE_DEBUG_TYPE_COFF, image_debug_type_coff;
+      IMAGE_DEBUG_TYPE_CODEVIEW, image_debug_type_codeview;
+      IMAGE_DEBUG_TYPE_FPO, image_debug_type_fpo;
+      IMAGE_DEBUG_TYPE_MISC, image_debug_type_misc;
+      IMAGE_DEBUG_TYPE_EXCEPTION, image_debug_type_exception;
+      IMAGE_DEBUG_TYPE_FIXUP, image_debug_type_fixup;
+      IMAGE_DEBUG_TYPE_OMAP_TO_SRC, image_debug_type_omap_to_src;
+      IMAGE_DEBUG_TYPE_OMAP_FROM_SRC, image_debug_type_omap_from_src;
+      IMAGE_DEBUG_TYPE_BORLAND, image_debug_type_borland;
+      IMAGE_DEBUG_TYPE_CLSID, image_debug_type_clsid;
+    ]
+
+  let import_code = T.constant "IMPORT_CODE" T.int64_t
+  let import_data = T.constant "IMPORT_DATA" T.int64_t
+  let import_const = T.constant "IMPORT_CONST" T.int64_t
+  let importtype = T.enum "ImportType" [ 
+      IMPORT_CODE, import_code;
+      IMPORT_DATA, import_data;
+      IMPORT_CONST, import_const;
+    ]
+
+
+  let import_ordinal = T.constant "IMPORT_ORDINAL" T.int64_t
+  let import_name = T.constant "IMPORT_NAME" T.int64_t
+  let import_name_noprefix = T.constant "IMPORT_NAME_NOPREFIX" T.int64_t
+  let import_name_undecorate = T.constant "IMPORT_NAME_UNDECORATE" T.int64_t
+  let importnametype = T.enum "ImportNameType" [ 
+      IMPORT_ORDINAL, import_ordinal;
+      IMPORT_NAME, import_name;
+      IMPORT_NAME_NOPREFIX, import_name_noprefix;
+      IMPORT_NAME_UNDECORATE, import_name_undecorate;
+    ]
+
+  let debug_line_tables_have_column_records = T.constant "DEBUG_LINE_TABLES_HAVE_COLUMN_RECORDS" T.int64_t
+  let debug_section_magic = T.constant "DEBUG_SECTION_MAGIC" T.int64_t
+  let debug_symbol_subsection = T.constant "DEBUG_SYMBOL_SUBSECTION" T.int64_t
+  let debug_line_table_subsection = T.constant "DEBUG_LINE_TABLE_SUBSECTION" T.int64_t
+  let debug_string_table_subsection = T.constant "DEBUG_STRING_TABLE_SUBSECTION" T.int64_t
+  let debug_index_subsection = T.constant "DEBUG_INDEX_SUBSECTION" T.int64_t
+  let debug_symbol_type_proc_start = T.constant "DEBUG_SYMBOL_TYPE_PROC_START" T.int64_t
+  let debug_symbol_type_proc_end = T.constant "DEBUG_SYMBOL_TYPE_PROC_END" T.int64_t
+  let codeviewidentifiers = T.enum "CodeViewIdentifiers" [ 
+      DEBUG_LINE_TABLES_HAVE_COLUMN_RECORDS, debug_line_tables_have_column_records;
+      DEBUG_SECTION_MAGIC, debug_section_magic;
+      DEBUG_SYMBOL_SUBSECTION, debug_symbol_subsection;
+      DEBUG_LINE_TABLE_SUBSECTION, debug_line_table_subsection;
+      DEBUG_STRING_TABLE_SUBSECTION, debug_string_table_subsection;
+      DEBUG_INDEX_SUBSECTION, debug_index_subsection;
+      DEBUG_SYMBOL_TYPE_PROC_START, debug_symbol_type_proc_start;
+      DEBUG_SYMBOL_TYPE_PROC_END, debug_symbol_type_proc_end;
+    ]
+
+  let cursor = T.constant "CURSOR" T.int64_t
+  let bitmap = T.constant "BITMAP" T.int64_t
+  let icon = T.constant "ICON" T.int64_t
+  let menu = T.constant "MENU" T.int64_t
+  let dialog = T.constant "DIALOG" T.int64_t
+  let string = T.constant "STRING" T.int64_t
+  let fontdir = T.constant "FONTDIR" T.int64_t
+  let font = T.constant "FONT" T.int64_t
+  let accelerator = T.constant "ACCELERATOR" T.int64_t
+  let rcdata = T.constant "RCDATA" T.int64_t
+  let messagetable = T.constant "MESSAGETABLE" T.int64_t
+  let group_cursor = T.constant "GROUP_CURSOR" T.int64_t
+  let group_icon = T.constant "GROUP_ICON" T.int64_t
+  let version = T.constant "VERSION" T.int64_t
+  let dlginclude = T.constant "DLGINCLUDE" T.int64_t
+  let plugplay = T.constant "PLUGPLAY" T.int64_t
+  let vxd = T.constant "VXD" T.int64_t
+  let anicursor = T.constant "ANICURSOR" T.int64_t
+  let aniicon = T.constant "ANIICON" T.int64_t
+  let html = T.constant "HTML" T.int64_t
+  let manifest = T.constant "MANIFEST" T.int64_t
+  let resource_types = T.enum "RESOURCE_TYPES" [ 
+      CURSOR, cursor;
+      BITMAP, bitmap;
+      ICON, icon;
+      MENU, menu;
+      DIALOG, dialog;
+      STRING, string;
+      FONTDIR, fontdir;
+      FONT, font;
+      ACCELERATOR, accelerator;
+      RCDATA, rcdata;
+      MESSAGETABLE, messagetable;
+      GROUP_CURSOR, group_cursor;
+      GROUP_ICON, group_icon;
+      VERSION, version;
+      DLGINCLUDE, dlginclude;
+      PLUGPLAY, plugplay;
+      VXD, vxd;
+      ANICURSOR, anicursor;
+      ANIICON, aniicon;
+      HTML, html;
+      MANIFEST, manifest;
+    ]
+
+  let sc_invalid = T.constant "SC_Invalid" T.int64_t
+  let image_scn_type_no_pad = T.constant "IMAGE_SCN_TYPE_NO_PAD" T.int64_t
+  let image_scn_cnt_code = T.constant "IMAGE_SCN_CNT_CODE" T.int64_t
+  let image_scn_cnt_initialized_data = T.constant "IMAGE_SCN_CNT_INITIALIZED_DATA" T.int64_t
+  let image_scn_cnt_uninitialized_data = T.constant "IMAGE_SCN_CNT_UNINITIALIZED_DATA" T.int64_t
+  let image_scn_lnk_other = T.constant "IMAGE_SCN_LNK_OTHER" T.int64_t
+  let image_scn_lnk_info = T.constant "IMAGE_SCN_LNK_INFO" T.int64_t
+  let image_scn_lnk_remove = T.constant "IMAGE_SCN_LNK_REMOVE" T.int64_t
+  let image_scn_lnk_comdat = T.constant "IMAGE_SCN_LNK_COMDAT" T.int64_t
+  let image_scn_gprel = T.constant "IMAGE_SCN_GPREL" T.int64_t
+  let image_scn_mem_purgeable = T.constant "IMAGE_SCN_MEM_PURGEABLE" T.int64_t
+  let image_scn_mem_16bit = T.constant "IMAGE_SCN_MEM_16BIT" T.int64_t
+  let image_scn_mem_locked = T.constant "IMAGE_SCN_MEM_LOCKED" T.int64_t
+  let image_scn_mem_preload = T.constant "IMAGE_SCN_MEM_PRELOAD" T.int64_t
+  let image_scn_align_1bytes = T.constant "IMAGE_SCN_ALIGN_1BYTES" T.int64_t
+  let image_scn_align_2bytes = T.constant "IMAGE_SCN_ALIGN_2BYTES" T.int64_t
+  let image_scn_align_4bytes = T.constant "IMAGE_SCN_ALIGN_4BYTES" T.int64_t
+  let image_scn_align_8bytes = T.constant "IMAGE_SCN_ALIGN_8BYTES" T.int64_t
+  let image_scn_align_16bytes = T.constant "IMAGE_SCN_ALIGN_16BYTES" T.int64_t
+  let image_scn_align_32bytes = T.constant "IMAGE_SCN_ALIGN_32BYTES" T.int64_t
+  let image_scn_align_64bytes = T.constant "IMAGE_SCN_ALIGN_64BYTES" T.int64_t
+  let image_scn_align_128bytes = T.constant "IMAGE_SCN_ALIGN_128BYTES" T.int64_t
+  let image_scn_align_256bytes = T.constant "IMAGE_SCN_ALIGN_256BYTES" T.int64_t
+  let image_scn_align_512bytes = T.constant "IMAGE_SCN_ALIGN_512BYTES" T.int64_t
+  let image_scn_align_1024bytes = T.constant "IMAGE_SCN_ALIGN_1024BYTES" T.int64_t
+  let image_scn_align_2048bytes = T.constant "IMAGE_SCN_ALIGN_2048BYTES" T.int64_t
+  let image_scn_align_4096bytes = T.constant "IMAGE_SCN_ALIGN_4096BYTES" T.int64_t
+  let image_scn_align_8192bytes = T.constant "IMAGE_SCN_ALIGN_8192BYTES" T.int64_t
+  let image_scn_lnk_nreloc_ovfl = T.constant "IMAGE_SCN_LNK_NRELOC_OVFL" T.int64_t
+  let image_scn_mem_discardable = T.constant "IMAGE_SCN_MEM_DISCARDABLE" T.int64_t
+  let image_scn_mem_not_cached = T.constant "IMAGE_SCN_MEM_NOT_CACHED" T.int64_t
+  let image_scn_mem_not_paged = T.constant "IMAGE_SCN_MEM_NOT_PAGED" T.int64_t
+  let image_scn_mem_shared = T.constant "IMAGE_SCN_MEM_SHARED" T.int64_t
+  let image_scn_mem_execute = T.constant "IMAGE_SCN_MEM_EXECUTE" T.int64_t
+  let image_scn_mem_read = T.constant "IMAGE_SCN_MEM_READ" T.int64_t
+  let image_scn_mem_write = T.constant "IMAGE_SCN_MEM_WRITE" T.int64_t
+  let section_characteristics = T.enum "SECTION_CHARACTERISTICS" [ 
+      SC_Invalid, sc_invalid;
+      IMAGE_SCN_TYPE_NO_PAD, image_scn_type_no_pad;
+      IMAGE_SCN_CNT_CODE, image_scn_cnt_code;
+      IMAGE_SCN_CNT_INITIALIZED_DATA, image_scn_cnt_initialized_data;
+      IMAGE_SCN_CNT_UNINITIALIZED_DATA, image_scn_cnt_uninitialized_data;
+      IMAGE_SCN_LNK_OTHER, image_scn_lnk_other;
+      IMAGE_SCN_LNK_INFO, image_scn_lnk_info;
+      IMAGE_SCN_LNK_REMOVE, image_scn_lnk_remove;
+      IMAGE_SCN_LNK_COMDAT, image_scn_lnk_comdat;
+      IMAGE_SCN_GPREL, image_scn_gprel;
+      IMAGE_SCN_MEM_PURGEABLE, image_scn_mem_purgeable;
+      IMAGE_SCN_MEM_16BIT, image_scn_mem_16bit;
+      IMAGE_SCN_MEM_LOCKED, image_scn_mem_locked;
+      IMAGE_SCN_MEM_PRELOAD, image_scn_mem_preload;
+      IMAGE_SCN_ALIGN_1BYTES, image_scn_align_1bytes;
+      IMAGE_SCN_ALIGN_2BYTES, image_scn_align_2bytes;
+      IMAGE_SCN_ALIGN_4BYTES, image_scn_align_4bytes;
+      IMAGE_SCN_ALIGN_8BYTES, image_scn_align_8bytes;
+      IMAGE_SCN_ALIGN_16BYTES, image_scn_align_16bytes;
+      IMAGE_SCN_ALIGN_32BYTES, image_scn_align_32bytes;
+      IMAGE_SCN_ALIGN_64BYTES, image_scn_align_64bytes;
+      IMAGE_SCN_ALIGN_128BYTES, image_scn_align_128bytes;
+      IMAGE_SCN_ALIGN_256BYTES, image_scn_align_256bytes;
+      IMAGE_SCN_ALIGN_512BYTES, image_scn_align_512bytes;
+      IMAGE_SCN_ALIGN_1024BYTES, image_scn_align_1024bytes;
+      IMAGE_SCN_ALIGN_2048BYTES, image_scn_align_2048bytes;
+      IMAGE_SCN_ALIGN_4096BYTES, image_scn_align_4096bytes;
+      IMAGE_SCN_ALIGN_8192BYTES, image_scn_align_8192bytes;
+      IMAGE_SCN_LNK_NRELOC_OVFL, image_scn_lnk_nreloc_ovfl;
+      IMAGE_SCN_MEM_DISCARDABLE, image_scn_mem_discardable;
+      IMAGE_SCN_MEM_NOT_CACHED, image_scn_mem_not_cached;
+      IMAGE_SCN_MEM_NOT_PAGED, image_scn_mem_not_paged;
+      IMAGE_SCN_MEM_SHARED, image_scn_mem_shared;
+      IMAGE_SCN_MEM_EXECUTE, image_scn_mem_execute;
+      IMAGE_SCN_MEM_READ, image_scn_mem_read;
+      IMAGE_SCN_MEM_WRITE, image_scn_mem_write;
+    ]
+
+  let pe32 = T.constant "PE32" T.int64_t
+  let pe32_plus = T.constant "PE32_PLUS" T.int64_t
+  let pe_types = T.enum "PE_TYPES" [ 
+      PE32, pe32;
+      PE32_PLUS, pe32_plus;
+    ]
+
+  (* PE STRUCTURES *)
+
+
+  
+
 end   
 
 module Bindings(T : Cstubs_structs.TYPE with type 'a typ = 'a typ) (F : Cstubs.FOREIGN) =
@@ -1703,5 +2651,8 @@ struct
 
 
 end
+
+
+
 
 
