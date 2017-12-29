@@ -1218,7 +1218,7 @@ struct
     let sht_hiproc = T.constant "SHT_HIPROC" T.int64_t
     let sht_louser = T.constant "SHT_LOUSER" T.int64_t
     let sht_hiuser = T.constant "SHT_HIUSER" T.int64_t
-    let elf_section_types = T.enum "SECTION_TYPES" [
+    let elf_section_types = T.enum "ELF_SECTION_TYPES" [
 	SHT_NULL, sht_null;
 	SHT_PROGBITS, sht_progbits;
 	SHT_SYMTAB, sht_symtab;
@@ -1317,7 +1317,7 @@ struct
     let pf_maskos = T.constant "PF_MASKOS" T.int64_t
     let pf_maskproc = T.constant "PF_MASKPROC" T.int64_t
 
-    let elf_segment_flags = T.enum "SEGMENT_FLAGS" [
+    let elf_segment_flags = T.enum "ELF_SEGMENT_FLAGS" [
 	PF_X, pf_x;
 	PF_W, pf_w;
 	PF_R, pf_r;
@@ -1524,7 +1524,7 @@ struct
     let stt_hios = T.constant "STT_HIOS" T.int64_t
     let stt_loproc = T.constant "STT_LOPROC" T.int64_t
     let stt_hiproc = T.constant "STT_HIPROC" T.int64_t
-    let elf_symbol_types = T.enum "SYMBOL_TYPES" [
+    let elf_symbol_types = T.enum "ELF_SYMBOL_TYPES" [
 	STT_NOTYPE, stt_notype;
 	STT_OBJECT, stt_object;
 	STT_FUNC, stt_func;
@@ -1578,7 +1578,7 @@ struct
     let hdr_sz          = T.field elf_header_t "header_size" (T.uint32_t)
     let prog_hdr_sz     = T.field elf_header_t "program_header_size" (T.uint32_t)
     let num_seg         = T.field elf_header_t "numberof_segments" (T.uint32_t)
-    let size_sec_hdr    = T.field elf_header_t "sizeof_section_header" (T.uint32_t)
+    let size_sec_hdr    = T.field elf_header_t "section_header_size" (T.uint32_t)
     let num_secs        = T.field elf_header_t "numberof_sections" (T.uint32_t)
     let nm_str_tbl_idx  = T.field elf_header_t "name_string_table_idx" (T.uint32_t)
     let ()              = T.seal elf_header_t 
